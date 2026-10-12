@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>爱德思 AS 数学 · 讲解指南</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\(','\)']], displayMath: [['$$','$$'], ['\[','\]']] }
+};
+</script>
+<script src="mathjax/tex-mml-svg.js" async></script>
+
+<link rel="stylesheet" href="_theme.css">
+<style>
+.ex .sol{border-left:3px solid var(--acc2);padding-left:12px;margin-top:6px}
+</style></head>
+<body>
+<div class="wrap">
+<div class="side"><h1>爱德思 AS 数学<br>讲解指南</h1>
+<div class="sub">Edexcel AS Mathematics 8MA0 · 17 个专题全覆盖</div>
+<div class="grp">Paper 1 · 纯数 Pure Mathematics（9 个专题）</div>
+<a class="item" href="#P1_证明">P1 · 证明 Proof</a>
+<a class="mini" href="#P1_证明-ex">↳ 例题</a>
+<a class="item" href="#P2_代数与函数">P2 · 代数与函数 Algebra and functions</a>
+<a class="mini" href="#P2_代数与函数-ex">↳ 例题</a>
+<a class="item" href="#P3_坐标几何">P3 · 坐标几何 Coordinate geometry in the $(x,y)$ plane</a>
+<a class="mini" href="#P3_坐标几何-ex">↳ 例题</a>
+<a class="item" href="#P4_数列与二项展开">P4 · 数列与级数 Sequences and series</a>
+<a class="mini" href="#P4_数列与二项展开-ex">↳ 例题</a>
+<a class="item" href="#P5_三角">P5 · 三角 Trigonometry</a>
+<a class="mini" href="#P5_三角-ex">↳ 例题</a>
+<a class="item" href="#P6_指数与对数">P6 · 指数与对数 Exponentials and logarithms</a>
+<a class="mini" href="#P6_指数与对数-ex">↳ 例题</a>
+<a class="item" href="#P7_微分">P7 · 微分 Differentiation</a>
+<a class="mini" href="#P7_微分-ex">↳ 例题</a>
+<a class="item" href="#P8_积分">P8 · 积分 Integration</a>
+<a class="mini" href="#P8_积分-ex">↳ 例题</a>
+<a class="item" href="#P9_向量">P9 · 向量 Vectors</a>
+<a class="mini" href="#P9_向量-ex">↳ 例题</a>
+<div class="grp">Paper 2 Section A · 统计 Statistics（5 个专题）</div>
+<a class="item" href="#S1_统计抽样">S1 · 统计抽样 Statistical sampling</a>
+<a class="mini" href="#S1_统计抽样-ex">↳ 例题</a>
+<a class="item" href="#S2_数据呈现与解释">S2 · 数据呈现与解释 Data presentation and interpretation</a>
+<a class="mini" href="#S2_数据呈现与解释-ex">↳ 例题</a>
+<a class="item" href="#S3_概率">S3 · 概率 Probability</a>
+<a class="mini" href="#S3_概率-ex">↳ 例题</a>
+<a class="item" href="#S4_统计分布">S4 · 统计分布 Statistical distributions</a>
+<a class="mini" href="#S4_统计分布-ex">↳ 例题</a>
+<a class="item" href="#S5_假设检验">S5 · 统计假设检验 Statistical hypothesis testing</a>
+<a class="mini" href="#S5_假设检验-ex">↳ 例题</a>
+<div class="grp">Paper 2 Section B · 力学 Mechanics（3 个专题）</div>
+<a class="item" href="#M6_量与单位">M6 · 力学中的量与单位 Quantities and units in mechanics</a>
+<a class="mini" href="#M6_量与单位-ex">↳ 例题</a>
+<a class="item" href="#M7_运动学">M7 · 运动学 Kinematics</a>
+<a class="mini" href="#M7_运动学-ex">↳ 例题</a>
+<a class="item" href="#M8_力与牛顿定律">M8 · 力与牛顿定律 Forces and Newton's laws</a>
+<a class="mini" href="#M8_力与牛顿定律-ex">↳ 例题</a>
+<div class="grp" style="margin-top:16px">其他页</div>
+<a class="item" href="index.html">← 总目录</a>
+<a class="item" href="as_math_slides.html">课堂课件</a>
+<a class="item" href="as_math_formula.html">公式手册</a>
+<a class="item" href="as_math_practice.html">练习题</a></div>
+<div class="main"><div class="hero">
+<h1>爱德思 AS 数学 · 讲解指南</h1>
+<div class="meta">
+Specification 8MA0｜Paper 1 纯数（2 小时，100 分，62.5%）+ Paper 2 统计与力学（1 小时 15 分，60 分，37.5%）<br>
+共 17 个专题 · 55 道例题（含详解）· 练习题见<a href="as_math_practice.html">练习页</a>（99 题）<br>
+内容按官方考纲（Specification Issue 3, 2025）逐条编写；术语保留英文原名。
+</div></div>
+<div class="toolbar">
+<button class="btn" onclick="toggleAll(false)">收起全部解答</button>
+<button class="btn" onclick="toggleAll(true)">展开全部解答</button>
+<a class="btn" href="as_math_formula.html">公式手册</a>
+<a class="btn" href="as_math_practice.html">练习题</a>
+</div><h2 id="P1_证明">P1 · 证明 Proof</h2><p class="note">考纲编号 Topic 1（Paper 1 纯数）｜ 这是 AS 纯数的第一块，几乎每道大题都会用到"说清楚为什么"的语言。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>1.1 理解并使用数学证明的结构：从<strong>已知假设</strong>出发，经过一系列<strong>逻辑步骤</strong>，到达结论。</p></li><li><p>1.1 会使用三种方法：<strong>演绎证明</strong>（proof by deduction）、<strong>穷举证明</strong>（proof by exhaustion）、<strong>反例证伪</strong>（disproof by counter example）。</p></li></ul><h3>知识点</h3><h4>什么是"证明"</h4>
+<p>证明不是"举几个例子看着对"。证明要求：对<strong>允许范围内的所有情形</strong>都成立，而且每一步都能说清依据。</p>
+<p>一个标准证明的结构是三段式：</p>
+<ol><li><strong>假设</strong>（given assumptions）：题目给了什么，例如"$n$ 是整数"。</li><li><strong>逻辑步骤</strong>：每一步都由上一步推出来，用的是定义、已知恒等式或运算法则。</li><li><strong>结论</strong>（conclusion）：明确写出"因此对所有的 …… 成立"。</li></ol>
+<p>考纲 OT1.1 特别要求：证明要用正确的符号和连接词来表达——<strong>constant（常数）、coefficient（系数）、expression（表达式）、equation（方程）、function（函数）、identity（恒等式）、index（指数）、term（项）、variable（变量）</strong>。这几个词不能混用：</p>
+<ul><li>*equation* 方程：只在某些取值下成立，需要"解"（如 $x^2=4$）。</li><li>*identity* 恒等式：对所有取值都成立，写作 $\equiv$（如 $\sin^2\theta+\cos^2\theta\equiv 1$）。</li><li>注意区别：你可以"解"一个方程，但不能"解"一个恒等式。</li></ul>
+<h4>演绎证明 proof by deduction</h4>
+<p>从一般前提出发，用代数推导得出结论。这是 AS 最常用的一类。</p>
+<p>典型套路：设一个<strong>一般性的量</strong>（general term），把它化成一个能看出性质的形式。</p>
+<p>例如证明"$n^2+n$ 对任意整数 $n$ 都是偶数"：</p>
+<p>$$n^2+n=n(n+1)$$</p>
+<p>$n$ 与 $n+1$ 是相邻两个整数，必有一个是偶数，所以乘积是偶数。$\square$</p>
+<p>关键点：$n(n+1)$ 这个<strong>因式分解</strong>把"看不出"变成"看得出"。演绎证明的核心技巧往往就是一次恰当的变形。</p>
+<h4>穷举证明 proof by exhaustion</h4>
+<p>把命题涉及的情形<strong>全部列出来</strong>逐一验证。只有当情形数量<strong>有限且不多</strong>时才可用。</p>
+<p>例如证明"对 $1\le n\le 5$ 的整数，$n^2-n+11$ 是质数"：</p>
+<table><thead><tr><th>$n$</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody><tr><td>$n^2-n+11$</td><td>11</td><td>13</td><td>17</td><td>23</td><td>31</td></tr></tbody></table>
+<p>五个都是质数，命题成立。</p>
+<p>要当心：穷举<strong>只对你列出来的那些情形成立</strong>。上例若把范围改成 $1\le n\le 11$，取 $n=11$ 得 $121=11^2$，命题立刻失效——这就是为什么穷举不能替代演绎。</p>
+<h4>反例证伪 disproof by counter example</h4>
+<p>要<strong>推翻</strong>一个"对所有 …… 都成立"的命题，只需找出<strong>一个</strong>使它为假的例子。</p>
+<p>例如命题"所有质数都是奇数"：反例 $2$（$2$ 是质数但为偶数）。命题被推翻。</p>
+<p>写反例时要求：</p>
+<ul><li>举出的例子必须<strong>落在命题声称的范围内</strong>；</li><li>要<strong>验算</strong>说明它确实使命题为假，不能只丢一个数字了事。</li></ul>
+<h4>常见失分点</h4>
+<ul><li>把"举三个例子"当证明（这是验证，不是证明）。</li><li>忘记说明变量的取值范围（$n$ 是整数？正实数？这一步不说，后续推理没有依据）。</li><li>用"显然""很明显"代替一步推理。考纲 AO2 明确要求呈现严密论证。</li></ul><h3 id="P1_证明-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>证明：对任意整数 $n$，$n^2+3n$ 是偶数。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$n^2+3n=n(n+3)$$</p>
+<p>分两种情况讨论：</p>
+<ul><li>若 $n$ 为偶数，则 $n=2k$，$n(n+3)=2k(2k+3)$，含因数 $2$，为偶数；</li><li>若 $n$ 为奇数，则 $n+3$ 为偶数，设 $n+3=2m$，则 $n(n+3)=2mn$，为偶数。</li></ul>
+<p>两种情形均为偶数，故对任意整数 $n$，$n^2+3n$ 为偶数。$\square$</p>
+<p>另一种更简洁的写法：$n^2+3n=n(n+3)$，而 $n$ 与 $n+3$ 奇偶性相反（相差 $3$，为奇数），故二者必有一个偶数，乘积为偶数。</p></div></details></div><div class="ex"><h4>例 2</h4><p>证明：对任意 $x&gt;0$，$\dfrac{x^2-1}{x-1}-x\equiv 1$（其中 $x\neq 1$）。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\frac{x^2-1}{x-1}-x=\frac{(x-1)(x+1)}{x-1}-x=(x+1)-x=1$$</p>
+<p>该式对一切 $x\neq 1$ 成立，故为恒等式。$\square$</p></div></details></div><div class="ex"><h4>例 3</h4><p>命题："对任意实数 $x$，$(x+2)^2&gt;x^2+4$。" 判断真假；若假，给出反例。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>展开左边：$(x+2)^2=x^2+4x+4$。</p>
+<p>命题等价于 $x^2+4x+4&gt;x^2+4$，即 $4x&gt;0$，即 $x&gt;0$。</p>
+<p>因此命题只对 $x&gt;0$ 成立，并非对任意实数成立，故命题为<strong>假</strong>。</p>
+<p>反例：取 $x=0$，左边 $=4$，右边 $=4$，$4&gt;4$ 不成立。$\square$</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P1_证明">练习页</a>，可隐藏答案自测。</p><h2 id="P2_代数与函数">P2 · 代数与函数 Algebra and functions</h2><p class="note">考纲编号 Topic 2（Paper 1 纯数）｜ AS 纯数里题量最大的一块，几乎每份 Paper 1 都会出现。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>2.1 理解并使用<strong>所有有理指数</strong>的指数律。</p></li><li><p>2.2 使用并化简<strong>根式</strong>（surds），包括<strong>分母有理化</strong>。</p></li><li><p>2.3 处理<strong>二次函数及其图像</strong>；<strong>判别式</strong>及实根、重根的条件；<strong>配方法</strong>；解二次方程（包括未知量是某个函数的情形）。</p></li><li><p>2.4 用<strong>消元法</strong>与<strong>代入法</strong>解二元联立方程，含一个线性一个二次的情形。</p></li><li><p>2.5 解<strong>一元线性与二次不等式</strong>并作图形解释（含带括号、带分式的情形），用 *and*、*or* 或<strong>集合符号</strong>表示解集，并在图上表示。</p></li><li><p>2.6 多项式代数运算：展开、合并同类项、因式分解、<strong>简单代数除法</strong>（只除以 $(ax+b)$ 或 $(ax-b)$）与<strong>因式定理</strong>。</p></li><li><p>2.7 理解并使用函数图像；画出简单方程定义的曲线（含多项式、$y=\dfrac{a}{x}$、$y=\dfrac{a}{x^2}$ 及其渐近线）；用图像交点解方程；理解比例关系及其图像。</p></li><li><p>2.8 理解 $y=\mathrm{f}(x)$ 图像上的简单<strong>变换</strong>：$y=a\mathrm{f}(x)$、$y=\mathrm{f}(x)+a$、$y=\mathrm{f}(x+a)$、$y=\mathrm{f}(ax)$。</p></li></ul><h3>知识点</h3><h4>2.1 指数律（对所有有理指数成立）</h4>
+<p>$$a^m a^n=a^{m+n},\qquad a^m\div a^n=a^{m-n},\qquad (a^m)^n=a^{mn}$$</p>
+<p>推论（务必会正反两个方向用）：</p>
+<p>$$a^0=1,\qquad a^{-n}=\frac{1}{a^n},\qquad a^{1/n}=\sqrt[n]{a},\qquad a^{m/n}=\left(\sqrt[n]{a}\right)^m$$</p>
+<p>常见题型是把不同底数统一：$8^x=2^{3x}$，$27^{2x}=3^{6x}$，$\dfrac{1}{\sqrt{4x}}=\dfrac{1}{2}x^{-1/2}$。</p>
+<h4>2.2 根式与分母有理化</h4>
+<p>化简根式的核心是提平方因子：</p>
+<p>$$\sqrt{72}=\sqrt{36\times 2}=6\sqrt2,\qquad \sqrt{18}+\sqrt8=3\sqrt2+2\sqrt2=5\sqrt2$$</p>
+<p>分母有理化：</p>
+<ul><li>单项分母：$\dfrac{6}{\sqrt3}=\dfrac{6\sqrt3}{3}=2\sqrt3$</li><li>两项分母（用平方差）：$\dfrac{5}{2+\sqrt3}=\dfrac{5(2-\sqrt3)}{(2+\sqrt3)(2-\sqrt3)}=\dfrac{5(2-\sqrt3)}{4-3}=10-5\sqrt3$</li></ul>
+<h4>2.3 二次函数、判别式与配方法</h4>
+<p>标准形式 $y=ax^2+bx+c$；顶点式（配方法得到）$y=a(x+p)^2+q$，顶点 $(-p,\,q)$。</p>
+<p>配方法步骤（以 $2x^2-8x+5$ 为例）：</p>
+<p>$$2x^2-8x+5=2(x^2-4x)+5=2\left[(x-2)^2-4\right]+5=2(x-2)^2-3$$</p>
+<p>顶点 $(2,-3)$，最小值 $-3$。</p>
+<p>求根公式与判别式：</p>
+<p>$$x=\frac{-b\pm\sqrt{b^2-4ac}}{2a},\qquad \Delta=b^2-4ac$$</p>
+<ul><li>$\Delta&gt;0$：两个不同实根（图像与 $x$ 轴有两个交点）</li><li>$\Delta=0$：<strong>重根</strong>（图像与 $x$ 轴相切）</li><li>$\Delta&lt;0$：无实根（图像不与 $x$ 轴相交）</li></ul>
+<p>注意公式册<strong>不提供</strong>求根公式——它属于必须背诵的公式（AS 考纲 Appendix 1）。</p>
+<p>"未知量是某个函数的方程"：如 $\mathrm{e}^{2x}-5\mathrm{e}^x+6=0$，令 $u=\mathrm{e}^x$，得 $u^2-5u+6=0$，$u=2$ 或 $3$，故 $x=\ln 2$ 或 $\ln 3$。</p>
+<h4>2.4 联立方程（一线性一二次）</h4>
+<p>标准做法：把线性方程变形代入二次方程，得到一元二次方程再解。判别式还能判断交点个数——求"直线与曲线相切"时令 $\Delta=0$。</p>
+<h4>2.5 不等式</h4>
+<p>解二次不等式的可靠流程：</p>
+<ol><li>化为一侧为零，且二次项系数为正；</li><li>求对应方程的根（临界值）；</li><li><strong>画草图</strong>（开口向上的抛物线），读出区间。</li></ol>
+<p>例如 $x^2-3x-4&gt;0$：$(x-4)(x+1)&gt;0$，临界值 $-1$ 与 $4$，开口向上，取两侧：$x&lt;-1$ 或 $x&gt;4$。</p>
+<p>表示法：</p>
+<ul><li>用 *or* / *and*：$x&lt;-1\ \text{or}\ x&gt;4$</li><li>集合符号：$\{x:x&lt;-1\}\cup\{x:x&gt;4\}$</li></ul>
+<p>带分母时<strong>不能直接乘</strong>（分母符号未知时不等式方向不确定）：$\dfrac{1}{x}&lt;2$ 应移项通分 $\dfrac{1-2x}{x}&lt;0$，再按临界值 $0$ 与 $\tfrac12$ 分段判断，得 $x&lt;0$ 或 $x&gt;\tfrac12$。</p>
+<h4>2.6 多项式与因式定理</h4>
+<p>因式定理：$\mathrm{f}(x)=0$ 当 $x=\dfrac{b}{a}$，则 $(ax-b)$ 是 $\mathrm{f}(x)$ 的因式。</p>
+<p>用法：找一个根 → 得一个因式 → 代数除法降次 → 继续分解。考纲只要求除以 $(ax+b)$ 或 $(ax-b)$ 的情形。</p>
+<p>化简有理式：$\dfrac{x^2-9}{x^2-x-6}=\dfrac{(x-3)(x+3)}{(x-3)(x+2)}=\dfrac{x+3}{x+2}$（$x\neq 3$）。</p>
+<h4>2.7 函数图像与渐近线</h4>
+<ul><li>$y=\dfrac{a}{x}$：双曲线，以 $x=0$ 与 $y=0$ 为渐近线。</li><li>$y=\dfrac{a}{x^2}$：两支在同侧（$a&gt;0$ 时都在 $x$ 轴上方），渐近线同为两轴。</li></ul>
+<p>用图像交点解方程：解 $\dfrac{2}{x}=x-1$ 等价于找 $y=\dfrac2x$ 与 $y=x-1$ 的交点横坐标。</p>
+<p>比例关系：$y\propto x$ 是过原点的直线；$y\propto \dfrac1x$ 是反比例双曲线；$y\propto x^2$ 是过原点的抛物线。</p>
+<h4>2.8 图像变换（记清楚"哪个方向"）</h4>
+<table><thead><tr><th>变换</th><th>形式</th><th>效果</th></tr></thead><tbody><tr><td>竖直平移</td><td>$y=\mathrm{f}(x)+a$</td><td>上移 $a$（向量 $\begin{pmatrix}0\\ a\end{pmatrix}$）</td></tr><tr><td>水平平移</td><td>$y=\mathrm{f}(x+a)$</td><td><strong>左</strong>移 $a$（$x$ 换成了 $x+a$，注意方向相反）</td></tr><tr><td>竖直伸缩</td><td>$y=a\mathrm{f}(x)$</td><td>纵向拉伸 $a$ 倍</td></tr><tr><td>水平伸缩</td><td>$y=\mathrm{f}(ax)$</td><td>横向压缩为原来的 $\dfrac1a$</td></tr></tbody></table>
+<p>组合变换时先做平抑还是伸缩会导致结果不同，考纲要的是"能画出变换后的图像"，逐个套用最稳妥。</p>
+<h4>常见失分点</h4>
+<ul><li>$a^{m/n}$ 与 $(a^m)^{1/n}$ 混用导致符号错误（底数为负时尤其危险）。</li><li>解不等式忘记乘负数要变号，或分式不等式直接乘分母。</li><li>变换方向记反：$\mathrm{f}(x+2)$ 是<strong>左</strong>移 $2$，不是右移。</li></ul><h3 id="P2_代数与函数-ex">例题（4 道）</h3><div class="ex"><h4>例 1</h4><p>化简 $\dfrac{8^{2x}\cdot 4^{1-x}}{16^{x}}$，并把 $\dfrac{7}{3-\sqrt2}$ 分母有理化。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>统一底数为 $2$：$8^{2x}=2^{6x}$，$4^{1-x}=2^{2-2x}$，$16^x=2^{4x}$。</p>
+<p>$$\frac{2^{6x}\cdot 2^{2-2x}}{2^{4x}}=2^{6x+2-2x-4x}=2^2=4$$</p>
+<p>有理化：</p>
+<p>$$\frac{7}{3-\sqrt2}=\frac{7(3+\sqrt2)}{(3-\sqrt2)(3+\sqrt2)}=\frac{7(3+\sqrt2)}{9-2}=3+\sqrt2$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>已知 $\mathrm{f}(x)=2x^2-8x+5$。（a）写成顶点式并写出最小值；（b）求方程 $\mathrm{f}(x)=0$ 的精确解。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）$\mathrm{f}(x)=2(x^2-4x)+5=2\left[(x-2)^2-4\right]+5=2(x-2)^2-3$，顶点 $(2,-3)$，最小值 $-3$。</p>
+<p>（b）令 $2(x-2)^2-3=0$，得 $(x-2)^2=\dfrac32$，$x=2\pm\sqrt{\dfrac32}=2\pm\dfrac{\sqrt6}{2}$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>求 $k$ 的值，使直线 $y=2x+k$ 与抛物线 $y=x^2-3x+5$ 相切。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>联立：$x^2-3x+5=2x+k\ \Rightarrow\ x^2-5x+(5-k)=0$。</p>
+<p>相切要求 $\Delta=0$：$25-4(5-k)=0\ \Rightarrow\ 25-20+4k=0\ \Rightarrow\ k=-\dfrac54$。</p></div></details></div><div class="ex"><h4>例 4</h4><p>解不等式 $\dfrac{2x-1}{x+3}\le 1$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>移项：$\dfrac{2x-1}{x+3}-1\le 0\ \Rightarrow\ \dfrac{2x-1-(x+3)}{x+3}\le 0\ \Rightarrow\ \dfrac{x-4}{x+3}\le 0$。</p>
+<p>临界值：$x=-3$（分母为零，不取）、$x=4$。分段判断符号：</p>
+<ul><li>$x&lt;-3$：分子负、分母负 → 分式为正，不满足；</li><li>$-3&lt;x\le 4$：分子负或零、分母正 → 分式为负或零，满足；</li><li>$x&gt;4$：分子正、分母正 → 分式为正，不满足。</li></ul>
+<p>解集：$-3&lt;x\le 4$，即 $\{x:-3&lt;x\}\cap\{x:x\le 4\}$。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P2_代数与函数">练习页</a>，可隐藏答案自测。</p><h2 id="P3_坐标几何">P3 · 坐标几何 Coordinate geometry in the $(x,y)$ plane</h2><p class="note">考纲编号 Topic 3（Paper 1 纯数）｜ 直线与圆，几乎必考，且常与向量、二次方程、判别式结合出大题。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>3.1 理解并使用<strong>直线方程</strong>，包括 $y-y_1=m(x-x_1)$ 与 $ax+by+c=0$ 两种形式；两条直线<strong>平行或垂直</strong>的斜率条件；能在各种情境中使用直线模型。</p></li><li><p>3.2 理解并使用<strong>圆的坐标几何</strong>：圆的标准方程 $(x-a)^2+(y-b)^2=r^2$；用<strong>配方法</strong>求圆心与半径；使用下列性质——<strong>半圆上的圆周角是直角</strong>；<strong>圆心到弦的垂线平分该弦</strong>；<strong>圆在圆周上一点的半径与该点的切线垂直</strong>。</p></li></ul><h3>知识点</h3><h4>3.1 直线</h4>
+<p>斜率：$m=\dfrac{y_2-y_1}{x_2-x_1}$（两点式）。</p>
+<p>两种方程形式要会互化：</p>
+<ul><li>点斜式 $y-y_1=m(x-x_1)$：已知一点与斜率时最快。</li><li>一般式 $ax+by+c=0$：便于求交点、求距离，也便于判断平行垂直。</li></ul>
+<p>平行与垂直：</p>
+<p>$$m_1=m_2\ \text{（平行）},\qquad m_1m_2=-1\ \text{（垂直）}$$</p>
+<p>垂直直线的斜率互为<strong>负倒数</strong>。水平线斜率为 $0$，竖直线斜率不存在（方程为 $x=c$）——这一句在答卷上要写清，否则判为遗漏情形。</p>
+<p>中点：$\left(\dfrac{x_1+x_2}{2},\ \dfrac{y_1+y_2}{2}\right)$；线段长：$\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$。</p>
+<h4>3.2 圆</h4>
+<p>标准方程：$(x-a)^2+(y-b)^2=r^2$，圆心 $(a,b)$，半径 $r$。</p>
+<p>一般式 $x^2+y^2+2gx+2fy+c=0$ 通过配方化为 $(x+g)^2+(y+f)^2=g^2+f^2-c$，圆心 $(-g,-f)$，半径 $\sqrt{g^2+f^2-c}$。半径必须满足 $g^2+f^2-c&gt;0$ 才构成实圆。</p>
+<p>三性质（考纲点名要求会用）：</p>
+<ol><li><strong>半圆上的圆周角是直角</strong>：若 $AB$ 是直径，$P$ 在圆上，则 $\angle APB=90^\circ$。反过来也能用：$\angle APB=90^\circ$ 说明 $P$ 在以 $AB$ 为直径的圆上。</li><li><strong>圆心到弦的垂线平分弦</strong>：已知弦的两个端点，弦的垂直平分线必过圆心——这是"已知三点求圆心"的标准做法。</li><li><strong>半径垂直于切线</strong>：求切线方程的常规流程是先求该点半径的斜率 $m_r$，切线斜率 $m_t=-\dfrac{1}{m_r}$，再用点斜式。</li></ol>
+<p>判断点与圆的位置：把点代入 $(x-a)^2+(y-b)^2$，大于 $r^2$ 在圆外，等于在圆上，小于在圆内。</p>
+<p>判断直线与圆的位置：联立后看判别式；$\Delta=0$ 即相切。也可用"圆心到直线距离与半径比较"。</p>
+<h4>常见失分点</h4>
+<ul><li>忘记竖直线的情形（斜率不存在）。</li><li>圆方程忘记开方：$x^2+y^2=25$ 的半径是 $5$ 不是 $25$。</li><li>求切线时把半径斜率直接当切线斜率用。</li></ul><h3 id="P3_坐标几何-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>点 $A(1,4)$ 与 $B(5,-2)$。（a）求直线 $AB$ 的方程，写成 $ax+by+c=0$；（b）求过 $A$ 且垂直于 $AB$ 的直线方程。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）$m_{AB}=\dfrac{-2-4}{5-1}=\dfrac{-6}{4}=-\dfrac32$。用点斜式：$y-4=-\dfrac32(x-1)$，乘 $2$ 整理：$2y-8=-3x+3$，即 $3x+2y-11=0$。</p>
+<p>（b）垂直斜率 $m=\dfrac23$。过 $A$：$y-4=\dfrac23(x-1)$，整理为 $2x-3y+10=0$。</p></div></details></div><div class="ex"><h4>例 2</h4><p>求过 $A(0,0)$、$B(4,0)$、$C(1,3)$ 三点的圆的方程。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>设圆 $x^2+y^2+2gx+2fy+c=0$。</p>
+<p>代入 $A$：$c=0$。代入 $B$：$16+8g=0$，$g=-2$。代入 $C$：$1+9+2g+6f=0$，即 $10-4+6f=0$，$f=-1$。</p>
+<p>故圆为 $x^2+y^2-4x-2y=0$，配方得 $(x-2)^2+(y-1)^2=5$。圆心 $(2,1)$，半径 $\sqrt5$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>圆 $(x-1)^2+(y+2)^2=13$，点 $P(4,0)$ 在圆上（验证：$(3)^2+(2)^2=13$）。求圆在 $P$ 处的切线方程。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>圆心 $C(1,-2)$。半径 $CP$ 的斜率 $m_r=\dfrac{0-(-2)}{4-1}=\dfrac23$。</p>
+<p>切线斜率 $m_t=-\dfrac32$。过 $P(4,0)$：$y-0=-\dfrac32(x-4)$，即 $3x+2y-12=0$。</p></div></details></div><h3>练习</h3><p>本专题的 5 道练习题已放入<a href="as_math_practice.html#P3_坐标几何">练习页</a>，可隐藏答案自测。</p><h2 id="P4_数列与二项展开">P4 · 数列与级数 Sequences and series</h2><p class="note">考纲编号 Topic 4（Paper 1 纯数）｜ AS 阶段只考<strong>二项展开</strong>这一项（等差数列求和属于 A-Level）。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>4.1 理解并使用 $(a+bx)^n$ 的<strong>二项展开</strong>，其中 $n$ 为正整数；掌握记号 $n!$ 与 $\displaystyle{}^nC_r=\binom{n}{r}$；并能与<strong>二项概率</strong>建立联系。</p></li></ul><h3>知识点</h3><h4>阶乘与组合数</h4>
+<p>$$n!=n(n-1)(n-2)\cdots 1,\qquad 0!=1$$</p>
+<p>$$\binom{n}{r}={}^nC_r=\frac{n!}{r!(n-r)!}$$</p>
+<p>$\binom{n}{r}$ 读作 "n choose r"，表示从 $n$ 个物件中不计顺序地选出 $r$ 个的方法数。对称性质：</p>
+<p>$$\binom{n}{r}=\binom{n}{n-r}$$</p>
+<p>计算技巧：不要死算阶乘，展开后约分更快，如 $\displaystyle\binom{8}{3}=\frac{8\cdot7\cdot6}{3\cdot2\cdot1}=56$。</p>
+<h4>二项定理</h4>
+<p>$$(a+b)^n=a^n+\binom{n}{1}a^{n-1}b+\binom{n}{2}a^{n-2}b^2+\cdots+\binom{n}{r}a^{n-r}b^r+\cdots+b^n$$</p>
+<p>这个公式<strong>在公式册里给出</strong>（不需要背诵），但必须会用。</p>
+<p>AS 常考的是 $(a+bx)^n$ 型，例如：</p>
+<p>$$(2+3x)^4=2^4+\binom41 2^3(3x)+\binom42 2^2(3x)^2+\binom43 2(3x)^3+(3x)^4$$ $$=16+96x+216x^2+216x^3+81x^4$$</p>
+<h4>典型问法</h4>
+<ol><li><strong>求某一项的系数</strong>：通项为 $\displaystyle\binom{n}{r}a^{n-r}(bx)^r$，令 $x$ 的次数等于目标次数解出 $r$。</li><li><strong>求前若干项的近似</strong>：展开到 $x^2$ 或 $x^3$ 项，忽略更高次项（小量近似）。</li><li><strong>用展开求近似值</strong>：如 $(1.01)^{10}$ 取前三项估算。</li><li><strong>与概率联系</strong>：二项分布 $\mathrm{P}(X=r)=\displaystyle\binom{n}{r}p^r(1-p)^{n-r}$ 中的 $\binom{n}{r}$ 就是这里的组合数；$(p+q)^n$ 展开各项之和为 $1$，正好对应所有概率之和为 $1$。</li></ol>
+<h4>常见失分点</h4>
+<ul><li>漏掉 $b$ 的系数：$(2+3x)^4$ 里 $x$ 的系数不是 $\binom41\cdot 2^3=32$，而是 $32\times 3=96$。</li><li>忘记 $0!=1$、$\binom{n}{0}=1$。</li><li>符号错误：$(1-2x)^5$ 中 $b=-2x$，奇数次项为负。</li></ul><h3 id="P4_数列与二项展开-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>展开 $(3-2x)^4$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>取 $a=3$，$b=-2x$，$n=4$：</p>
+<p>$$(3-2x)^4=81+\binom41 27(-2x)+\binom42 9(4x^2)+\binom43 3(-8x^3)+16x^4$$ $$=81-216x+216x^2-96x^3+16x^4$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>求 $\left(2x+\dfrac{1}{x}\right)^{8}$ 展开式中常数项。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>通项：$\displaystyle\binom{8}{r}(2x)^{8-r}\left(\frac{1}{x}\right)^{r}=\binom{8}{r}2^{8-r}x^{8-2r}$。</p>
+<p>令 $8-2r=0$ 得 $r=4$。常数项 $=\displaystyle\binom84 2^4=70\times 16=1120$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>用二项展开的前三项估算 $(0.99)^6$，保留 $5$ 位小数。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$(0.99)^6=(1-0.01)^6=1-\binom61(0.01)+\binom62(0.01)^2-\cdots$</p>
+<p>$=1-0.06+15(0.0001)=1-0.06+0.0015=0.9415$（下一项为 $-\binom63(10^{-6})=-2\times10^{-5}$，故 $0.9415$ 已是 $4$ 位小数精度）。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P4_数列与二项展开">练习页</a>，可隐藏答案自测。</p><h2 id="P5_三角">P5 · 三角 Trigonometry</h2><p class="note">考纲编号 Topic 5（Paper 1 纯数）｜ 正弦余弦定理、恒等式与三角方程，是 Paper 1 的高频失分区。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>5.1 理解并使用<strong>任意角</strong>（all arguments）的正弦、余弦、正切定义；<strong>正弦定理</strong>、<strong>余弦定理</strong>；三角形面积公式 $\dfrac12 ab\sin C$。</p></li><li><p>5.2 理解并使用正弦、余弦、正切函数的<strong>图像、对称性与周期性</strong>。</p></li><li><p>5.3 理解并使用 $\tan\theta=\dfrac{\sin\theta}{\cos\theta}$ 与 $\sin^2\theta+\cos^2\theta\equiv 1$。</p></li><li><p>5.4 在给定区间内解<strong>简单的三角方程</strong>，包括 $\sin,\cos,\tan$ 的<strong>二次方程</strong>与含<strong>未知角倍数</strong>的方程。</p></li></ul><h3>知识点</h3><h4>5.1 任意角的定义与两个定理</h4>
+<p>单位圆定义：角 $\theta$ 从正 $x$ 轴逆时针量起，终边与单位圆交点为 $(\cos\theta,\ \sin\theta)$。因此三角函数对<strong>任意角</strong>（不只是 $0^\circ$–$90^\circ$）都有定义，符号按象限决定。</p>
+<p><strong>CAST 图</strong>（四象限符号）：</p>
+<ul><li>第一象限（$0$–$90^\circ$）：<strong>A</strong>ll 全正</li><li>第二象限（$90$–$180^\circ$）：<strong>S</strong>ine 为正</li><li>第三象限（$180$–$270^\circ$）：<strong>T</strong>angent 为正</li><li>第四象限（$270$–$360^\circ$）：<strong>C</strong>osine 为正</li></ul>
+<p>在三角形 $ABC$ 中（边 $a,b,c$ 分别对角 $A,B,C$）：</p>
+<p>$$\text{正弦定理：}\quad \frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}$$</p>
+<p>$$\text{余弦定理：}\quad a^2=b^2+c^2-2bc\cos A$$</p>
+<p>$$\text{面积：}\quad \text{Area}=\frac12 ab\sin C$$</p>
+<p>这三个公式属于<strong>必须背诵</strong>的内容（考纲 Appendix 1），公式册里没有。</p>
+<p>用法选择：</p>
+<ul><li>已知两角一边 → 正弦定理；</li><li>已知两边及其夹角 → 余弦定理；</li><li>已知三边 → 余弦定理求角；</li><li>已知两边及其中一边的对角（SSA）→ 正弦定理，但<strong>注意可能有两解</strong>（$\sin\theta=k$ 在 $0$–$180^\circ$ 有 $\theta$ 与 $180^\circ-\theta$ 两解）。</li></ul>
+<h4>5.2 图像、对称性与周期性</h4>
+<ul><li>$y=\sin x$：周期 $360^\circ$（$2\pi$），关于原点奇对称，$\sin(180^\circ-x)=\sin x$。</li><li>$y=\cos x$：周期 $360^\circ$，偶对称，$\cos(-x)=\cos x$，$\cos(360^\circ-x)=\cos x$。</li><li>$y=\tan x$：周期 $180^\circ$（$\pi$），在 $90^\circ,270^\circ,\dots$ 处有渐近线。</li></ul>
+<h4>5.3 两个核心恒等式</h4>
+<p>$$\tan\theta\equiv\frac{\sin\theta}{\cos\theta},\qquad \sin^2\theta+\cos^2\theta\equiv 1$$</p>
+<p>第二条常变形为 $\sin^2\theta\equiv 1-\cos^2\theta$ 或 $\cos^2\theta\equiv 1-\sin^2\theta$，是把"混合方程"化成单一函数的关键。</p>
+<h4>5.4 三角方程的标准流程</h4>
+<ol><li><strong>先化简</strong>：用恒等式把方程变成只含一种函数（或可分解的形式）。</li><li><strong>换元</strong>：令 $u=\sin x$（或 $\cos x$、$\tan x$），解代数方程。</li><li><strong>确定区间</strong>：题目要求 $0\le x\le 360^\circ$ 还是 $0\le x\le 2\pi$，务必看清单位。</li><li><strong>找全解</strong>：利用对称性与周期性写出<strong>全部</strong>解，再剔除区间外的。</li></ol>
+<p>通用技巧：</p>
+<ul><li>$\sin x=k$：基准角 $\alpha=\sin^{-1}|k|$，解为 $\alpha$ 与 $180^\circ-\alpha$（按 CAST 取正值的象限），每 $360^\circ$ 重复。</li><li>$\cos x=k$：解为 $\alpha$ 与 $360^\circ-\alpha$。</li><li>$\tan x=k$：解为 $\alpha$ 与 $\alpha+180^\circ$。</li><li>倍数角：如 $\sin 2x=k$，先令 $\theta=2x$ 解出 $\theta$ 的<strong>全部</strong>值（区间也要翻倍：$0\le x\le 360^\circ$ 对应 $0\le \theta\le 720^\circ$），再除以 $2$。</li></ul>
+<h4>常见失分点</h4>
+<ul><li>计算器设在 rad 模式却按 degree 答题（或反之）。</li><li>忘记第二象限解，只给 $\sin^{-1}$ 的主值。</li><li>倍数角忘记扩大区间，导致漏解一半。</li></ul><h3 id="P5_三角-ex">例题（4 道）</h3><div class="ex"><h4>例 1</h4><p>三角形中 $b=7$，$c=5$，$A=60^\circ$。求边 $a$ 与三角形面积。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$a^2=7^2+5^2-2(7)(5)\cos 60^\circ=49+25-70(0.5)=39,\qquad a=\sqrt{39}$$</p>
+<p>$$\text{Area}=\frac12 bc\sin A=\frac12(7)(5)\sin60^\circ=\frac{35\sqrt3}{4}$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>三角形中 $a=8$，$b=10$，$A=40^\circ$。求 $B$ 的可能值。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>正弦定理：$\dfrac{\sin B}{10}=\dfrac{\sin 40^\circ}{8}$，$\sin B=\dfrac{10\sin40^\circ}{8}=0.8035$。</p>
+<p>$B=\sin^{-1}(0.8035)=53.5^\circ$ 或 $180^\circ-53.5^\circ=126.5^\circ$。</p>
+<p>两者都使 $A+B&lt;180^\circ$（分别是 $93.5^\circ$ 与 $166.5^\circ$），故<strong>两解都成立</strong>。</p></div></details></div><div class="ex"><h4>例 3</h4><p>解 $2\cos^2 x+\sin x=1$，$0\le x\le 360^\circ$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>用 $\cos^2x=1-\sin^2x$：$2(1-\sin^2x)+\sin x=1\ \Rightarrow\ 2\sin^2x-\sin x-1=0$。</p>
+<p>分解为 $(2\sin x+1)(\sin x-1)=0$。</p>
+<p>$\sin x=-\dfrac12$：$x=210^\circ,\ 330^\circ$；$\sin x=1$：$x=90^\circ$。</p>
+<p>解集：$x=90^\circ,\ 210^\circ,\ 330^\circ$。</p></div></details></div><div class="ex"><h4>例 4</h4><p>解 $\sin 2x=0.5$，$0\le x\le 360^\circ$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>令 $\theta=2x$，则 $0\le\theta\le 720^\circ$。$\sin\theta=0.5$ 得 $\theta=30^\circ,150^\circ,390^\circ,510^\circ$。</p>
+<p>故 $x=15^\circ,\ 75^\circ,\ 195^\circ,\ 255^\circ$。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P5_三角">练习页</a>，可隐藏答案自测。</p><h2 id="P6_指数与对数">P6 · 指数与对数 Exponentials and logarithms</h2><p class="note">考纲编号 Topic 6（Paper 1 纯数）｜ 建模题的常客：人口增长、放射性衰变、药物浓度、复利。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>6.1 认识并使用 $a^x\ (a&gt;0)$ 及其图像；认识并使用 $\mathrm{e}^x$ 及其图像。</p></li><li><p>6.2 知道 $\mathrm{e}^{kx}$ 的导数等于 $k\mathrm{e}^{kx}$，并由此理解为什么指数模型适合很多应用。</p></li><li><p>6.3 认识并使用 $\log_a x$（$a&gt;0,\ a\neq 1,\ x&gt;0$）作为 $a^x$ 的<strong>反函数</strong>；认识并使用 $\ln x$ 及其图像；$\ln x$ 是 $\mathrm{e}^x$ 的反函数。</p></li><li><p>6.4 理解并使用对数律：$\log_ax+\log_ay=\log_a(xy)$、$\log_ax-\log_ay=\log_a\!\left(\dfrac{x}{y}\right)$、$k\log_ax=\log_a(x^k)$（含 $k=-1$ 与 $k=\dfrac12$ 的情形）。</p></li><li><p>6.5 解形如 $a^x=b$ 的方程。</p></li><li><p>6.6 用<strong>对数图像</strong>估计 $y=ax^n$ 与 $y=kb^x$ 型关系中的参数。</p></li><li><p>6.7 理解并使用<strong>指数增长与衰减</strong>；用于建模（连续复利、放射性衰变、药物浓度衰减、人口增长）；并会讨论模型的局限与改进。</p></li></ul><h3>知识点</h3><h4>6.1 指数函数图像</h4>
+<p>$y=a^x\ (a&gt;0)$：恒过 $(0,1)$，值域 $y&gt;0$，$x$ 轴是水平渐近线。$a&gt;1$ 递增，$0&lt;a&lt;1$ 递减。</p>
+<p>$y=\mathrm{e}^x$：$\mathrm{e}\approx 2.718$，是唯一一个"斜率等于自身"的指数函数。</p>
+<h4>6.2 $\mathrm{e}^{kx}$ 的导数</h4>
+<p>$$\frac{\mathrm{d}}{\mathrm{d}x}\left(\mathrm{e}^{kx}\right)=k\mathrm{e}^{kx}$$</p>
+<p>这个性质是指数模型能被广泛使用的根本原因：<strong>变化率与当前量成正比</strong>。人口越多增长越快、放射性样品越多衰变越快、药物浓度越高代谢越快——全都符合这个规律。</p>
+<h4>6.3 对数是反函数</h4>
+<p>$$y=\log_a x\ \Longleftrightarrow\ x=a^y$$</p>
+<p>因此：</p>
+<ul><li>定义域 $x&gt;0$（对数不接受非正自变量，这是最常见的错误来源）；</li><li>图像过 $(1,0)$，与 $y=a^x$ 关于 $y=x$ 对称；</li><li>恒等式：$a^{\log_a x}=x$，$\log_a(a^x)=x$；</li><li>$\ln x=\log_\mathrm{e}x$，且 $\ln(\mathrm{e}^x)=x$、$\mathrm{e}^{\ln x}=x$。</li></ul>
+<h4>6.4 对数三律</h4>
+<p>$$\log_a x+\log_a y\equiv\log_a(xy)$$ $$\log_a x-\log_a y\equiv\log_a\!\left(\frac{x}{y}\right)$$ $$k\log_a x\equiv\log_a\!\left(x^k\right)$$</p>
+<p>特别地：$-\log_a x=\log_a\!\left(\dfrac1x\right)$，$\dfrac12\log_a x=\log_a\sqrt x$。</p>
+<p>注意<strong>没有</strong>这些公式：$\log(x+y)\neq\log x+\log y$；$\dfrac{\log x}{\log y}\neq\log(x-y)$。</p>
+<p>换底公式（公式册给出）：$\log_a x=\dfrac{\log_b x}{\log_b a}$；以及 $\mathrm{e}^{x\ln a}=a^x$。</p>
+<h4>6.5 解 $a^x=b$</h4>
+<p>两边取对数：$\ln(a^x)=\ln b\ \Rightarrow\ x\ln a=\ln b\ \Rightarrow\ x=\dfrac{\ln b}{\ln a}$。</p>
+<h4>6.6 用对数图估参数</h4>
+<p>这是 AS 的特色题型，思路是把"曲线"变成"直线"：</p>
+<ul><li>若 $y=ax^n$，取对数：$\log y=\log a+n\log x$。作 $\log y$ 对 $\log x$ 的图，得<strong>直线</strong>，斜率 $=n$，截距 $=\log a$。</li><li>若 $y=kb^x$，取对数：$\log y=\log k+x\log b$。作 $\log y$ 对 $x$ 的图，得<strong>直线</strong>，斜率 $=\log b$，截距 $=\log k$。</li></ul>
+<p>答题要点：先写清楚取了对数后的线性关系，再从图上读斜率和截距，最后还原参数（$a=10^{\text{截距}}$ 或 $\mathrm{e}^{\text{截距}}$，注意对数底）。</p>
+<h4>6.7 指数建模</h4>
+<p>通用形式：$y=A\mathrm{e}^{kt}$（$k&gt;0$ 增长，$k&lt;0$ 衰减），$A$ 是 $t=0$ 时的初始值。</p>
+<p>典型问法与做法：</p>
+<ul><li>求半衰期：解 $A\mathrm{e}^{kt}=\dfrac A2$，得 $t=-\dfrac{\ln 2}{k}$。</li><li>求"降到某比例所需时间"：解 $A\mathrm{e}^{kt}=\text{目标值}$。</li><li>求初始值：$y(0)=A$。</li></ul>
+<p>模型局限（考纲明确要求会讨论）：指数增长长期会无限膨胀，现实中资源、空间、饱和效应会限制它；指数衰变在长期会趋近于 $0$ 但不等于 $0$，实际测量有下限（探测阈值）。改进方向例如给增长加上"承载量上限"（logistic 型）。</p>
+<h4>常见失分点</h4>
+<ul><li>忘记对数定义域，解出 $x&lt;0$ 却不舍去。</li><li>把 $\log(x+y)$ 拆成 $\log x+\log y$。</li><li>建模题忘记单位（时间用年还是小时）。</li></ul><h3 id="P6_指数与对数-ex">例题（4 道）</h3><div class="ex"><h4>例 1</h4><p>把 $3\ln x-\dfrac12\ln y+\ln 4$ 写成单个对数。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$3\ln x=\ln(x^3),\qquad \frac12\ln y=\ln\sqrt y$$</p>
+<p>$$\ln(x^3)-\ln\sqrt y+\ln4=\ln\!\left(\frac{4x^3}{\sqrt y}\right)$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>解 $5^{2x-1}=80$，给出 $x$ 精确到 $3$ 位有效数字。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>取自然对数：$(2x-1)\ln 5=\ln 80$。</p>
+<p>$$2x-1=\frac{\ln80}{\ln5}=\frac{4.382}{1.609}=2.723,\qquad x=\frac{3.723}{2}=1.86$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>某药物在血液中的浓度 $C$（mg/L）满足 $C=12\mathrm{e}^{-0.15t}$，$t$ 为小时。（a）初始浓度；（b）浓度降到 $3$ mg/L 所需时间。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）$C(0)=12\mathrm{e}^0=12$ mg/L。</p>
+<p>（b）$12\mathrm{e}^{-0.15t}=3\ \Rightarrow\ \mathrm{e}^{-0.15t}=0.25\ \Rightarrow\ -0.15t=\ln 0.25=-1.386$。</p>
+<p>$$t=\frac{1.386}{0.15}=9.24\ \text{小时}$$</p></div></details></div><div class="ex"><h4>例 4</h4><p>一组数据被认为满足 $y=ax^n$。作 $\log_{10}y$ 对 $\log_{10}x$ 的图像得一直线，斜率 $1.5$，截距 $0.4$。求 $a$ 与 $n$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$\log_{10}y=\log_{10}a+n\log_{10}x$，故 $n=1.5$，$\log_{10}a=0.4$，$a=10^{0.4}=2.51$。</p>
+<p>即 $y=2.51x^{1.5}$。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P6_指数与对数">练习页</a>，可隐藏答案自测。</p><h2 id="P7_微分">P7 · 微分 Differentiation</h2><p class="note">考纲编号 Topic 7（Paper 1 纯数）｜ 与 P8 积分共同构成 AS 微积分，几乎每份 Paper 1 都有大题。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>7.1 理解并使用 $\mathrm{f}(x)$ 的导数：它是 $y=\mathrm{f}(x)$ 在一般点 $(x,y)$ 处<strong>切线的斜率</strong>；切线斜率作为<strong>极限</strong>；解释为<strong>变化率</strong>；对给定曲线画出<strong>梯度函数</strong>草图；<strong>二阶导数</strong>；对 $x$ 的<strong>小正整数次幂</strong>用<strong>第一原理</strong>求导。理解并使用二阶导数作为"斜率的变化率"。</p></li><li><p>7.2 对<strong>有理</strong>指数 $n$ 求 $x^n$ 的导数，以及相应的常数倍、和与差。</p></li><li><p>7.3 用微分求<strong>梯度、切线与法线</strong>、<strong>极大极小与驻点</strong>；判断函数在何处递增或递减。</p></li></ul><h3>知识点</h3><h4>7.1 导数的含义</h4>
+<p>$$ \mathrm{f}'(x)=\lim_{h\to 0}\frac{\mathrm{f}(x+h)-\mathrm{f}(x)}{h} $$</p>
+<p>三层含义必须都能说出来：</p>
+<ol><li><strong>几何</strong>：切线的斜率；</li><li><strong>物理/应用</strong>：$y$ 关于 $x$ 的<strong>变化率</strong>；</li><li><strong>函数</strong>：梯度函数 $\mathrm{f}'(x)$。</li></ol>
+<p>第一原理求导（以 $\mathrm{f}(x)=x^2$ 为例）：</p>
+<p>$$\mathrm{f}'(x)=\lim_{h\to0}\frac{(x+h)^2-x^2}{h}=\lim_{h\to0}\frac{2xh+h^2}{h}=\lim_{h\to0}(2x+h)=2x$$</p>
+<p>二阶导数 $\mathrm{f}''(x)$ 是"斜率的变化率"：</p>
+<ul><li>$\mathrm{f}''(x)&gt;0$：斜率在增大，曲线<strong>上凸</strong>（凹向上），此处若为驻点则是<strong>极小值</strong>；</li><li>$\mathrm{f}''(x)&lt;0$：斜率在减小，曲线<strong>下凸</strong>（凹向下），此处若为驻点则是<strong>极大值</strong>。</li></ul>
+<p>画梯度函数草图的方法：在原曲线上找斜率为 $0$ 的点（驻点），梯度函数在这些位置过 $x$ 轴；原曲线斜率最大的位置，梯度函数取极大值。</p>
+<h4>7.2 求导规则</h4>
+<p>$$\frac{\mathrm{d}}{\mathrm{d}x}\left(x^n\right)=nx^{n-1}\quad (n\ \text{为有理数})$$</p>
+<p>$$\frac{\mathrm{d}}{\mathrm{d}x}\left(\mathrm{e}^{kx}\right)=k\mathrm{e}^{kx}$$</p>
+<p>线性性：$\dfrac{\mathrm{d}}{\mathrm{d}x}\bigl(a\mathrm{f}+b\mathrm{g}\bigr)=a\mathrm{f}'+b\mathrm{g}'$。</p>
+<p>求导前<strong>必须先化为幂的形式</strong>：</p>
+<p>$$\mathrm{f}(x)=\frac{3}{x^2}+\sqrt x=3x^{-2}+x^{1/2}\ \Rightarrow\ \mathrm{f}'(x)=-6x^{-3}+\frac12 x^{-1/2}$$</p>
+<h4>7.3 应用</h4>
+<p>切线与法线：在 $x=a$ 处，切线斜率 $m_t=\mathrm{f}'(a)$，法线斜率 $m_n=-\dfrac{1}{\mathrm{f}'(a)}$（前提 $\mathrm{f}'(a)\neq0$）。</p>
+<p>驻点与极值：</p>
+<ol><li>令 $\mathrm{f}'(x)=0$，解出驻点横坐标；</li><li>代回求 $\mathrm{f}(x)$ 得驻点坐标；</li><li>用 $\mathrm{f}''(x)$ 判极大（$&lt;0$）或极小（$&gt;0$）；若 $\mathrm{f}''=0$ 需进一步考察两侧符号。</li></ol>
+<p><strong>最大值/最小值问题（最优化）</strong>是 AS 的经典大题，流程固定：</p>
+<ol><li>设变量，写出目标量（面积、体积、成本……）的表达式；</li><li>用约束条件消元，化成<strong>单变量</strong>函数；</li><li>求导、令导数为零、求驻点；</li><li><strong>用二阶导数或端点比较说明它是最大还是最小</strong>；</li><li>回答题目问的量（带单位），并检查变量的<strong>实际取值范围</strong>。</li></ol>
+<p>递增与递减区间：$\mathrm{f}'(x)&gt;0$ 递增，$\mathrm{f}'(x)&lt;0$ 递减。</p>
+<h4>常见失分点</h4>
+<ul><li>忘记把 $\dfrac1{x^2}$、$\sqrt x$ 化成幂的形式再求导。</li><li>只求驻点不判性质（题目问"最大值"时必须说明为什么是最大）。</li><li>最优化题忘记说明取值范围，或忘记验证二阶导数符号。</li><li>法线斜率算错（应为负倒数，不是倒数）。</li></ul><h3 id="P7_微分-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>$\mathrm{f}(x)=2x^3-9x^2+12x+1$。求 $\mathrm{f}'(x)$、$\mathrm{f}''(x)$，并求所有驻点及其性质。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathrm{f}'(x)=6x^2-18x+12=6(x^2-3x+2)=6(x-1)(x-2)$$</p>
+<p>$$\mathrm{f}''(x)=12x-18$$</p>
+<p>令 $\mathrm{f}'(x)=0$ 得 $x=1$ 或 $x=2$。</p>
+<p>$\mathrm{f}(1)=2-9+12+1=6$；$\mathrm{f}''(1)=-6&lt;0$，故 $(1,6)$ 为<strong>极大值点</strong>。</p>
+<p>$\mathrm{f}(2)=16-36+24+1=5$；$\mathrm{f}''(2)=6&gt;0$，故 $(2,5)$ 为<strong>极小值点</strong>。</p></div></details></div><div class="ex"><h4>例 2</h4><p>曲线 $y=x^3-2x+1$。求在 $x=2$ 处的切线与法线方程。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$y(2)=8-4+1=5$，点为 $(2,5)$。导数为 $3x^2-2$，$x=2$ 时为 $10$。</p>
+<p>切线：$y-5=10(x-2)$，即 $y=10x-15$。</p>
+<p>法线：斜率 $-\dfrac1{10}$，$y-5=-\dfrac1{10}(x-2)$，即 $x+10y-52=0$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>用一张 $20$ cm $\times$ $20$ cm 的方形纸板做无盖盒子：四角各剪去边长 $x$ cm 的小正方形后折起。求容积最大时的 $x$ 与最大容积。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>盒底边长 $20-2x$，高 $x$：</p>
+<p>$$V=x(20-2x)^2=400x-80x^2+4x^3,\qquad 0&lt;x&lt;10$$</p>
+<p>$$\frac{\mathrm{d}V}{\mathrm{d}x}=400-160x+12x^2=4(100-40x+3x^2)$$</p>
+<p>令为 $0$：$3x^2-40x+100=0$，$(3x-10)(x-10)=0$，得 $x=\dfrac{10}{3}$ 或 $x=10$（后者超出取值范围，舍去）。</p>
+<p>$$\frac{\mathrm{d}^2V}{\mathrm{d}x^2}=-160+24x,\quad x=\frac{10}{3}\ \text{时为}\ -160+80=-80&lt;0$$</p>
+<p>故 $x=\dfrac{10}{3}$ cm 处取最大。最大容积 $V=\dfrac{10}{3}\left(20-\dfrac{20}{3}\right)^2=\dfrac{10}{3}\cdot\left(\dfrac{40}{3}\right)^2=\dfrac{16000}{27}\approx 593\ \text{cm}^3$。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P7_微分">练习页</a>，可隐藏答案自测。</p><h2 id="P8_积分">P8 · 积分 Integration</h2><p class="note">考纲编号 Topic 8（Paper 1 纯数）｜ 与 P7 配套；定积分求面积是必考题型。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>8.1 认识并使用<strong>微积分基本定理</strong>（Fundamental Theorem of Calculus）。</p></li><li><p>8.2 积分 $x^n$（$n\neq -1$）以及相关的和、差与常数倍。</p></li><li><p>8.3 计算<strong>定积分</strong>；用定积分求<strong>曲线下的面积</strong>。</p></li></ul><h3>知识点</h3><h4>8.1 微积分基本定理</h4>
+<p>它说的是：<strong>微分与积分互为逆运算</strong>。</p>
+<p>若 $\mathrm{F}'(x)=\mathrm{f}(x)$，则</p>
+<p>$$\int_a^b \mathrm{f}(x)\,\mathrm{d}x=\mathrm{F}(b)-\mathrm{F}(a)$$</p>
+<p>这里 $\mathrm{F}$ 是 $\mathrm{f}$ 的一个原函数（antiderivative）。</p>
+<h4>8.2 不定积分</h4>
+<p>$$\int x^n\,\mathrm{d}x=\frac{x^{n+1}}{n+1}+c\qquad (n\neq-1)$$</p>
+<p>$$\int \mathrm{e}^{kx}\,\mathrm{d}x=\frac{1}{k}\mathrm{e}^{kx}+c$$</p>
+<p>线性性：$\displaystyle\int\bigl(a\mathrm{f}+b\mathrm{g}\bigr)\mathrm{d}x=a\!\int\!\mathrm{f}\,\mathrm{d}x+b\!\int\!\mathrm{g}\,\mathrm{d}x$。</p>
+<p>与求导一样，<strong>先化成幂的形式</strong>：</p>
+<p>$$\int\left(\frac{3}{x^2}+\sqrt x\right)\mathrm{d}x=\int\left(3x^{-2}+x^{1/2}\right)\mathrm{d}x=-3x^{-1}+\frac23x^{3/2}+c$$</p>
+<p><strong>不要忘记 $+c$</strong>（不定积分）。这是最常被扣的一分。</p>
+<h4>8.3 定积分与面积</h4>
+<p>$$\text{面积}=\int_a^b y\,\mathrm{d}x\qquad (y\ge 0\ \text{在}\ [a,b]\ \text{上})$$</p>
+<p>计算流程（务必写成"方括号 + 上下限"的格式）：</p>
+<p>$$\int_1^2 (x^2+1)\,\mathrm{d}x=\left[\frac{x^3}{3}+x\right]_1^2=\left(\frac83+2\right)-\left(\frac13+1\right)=\frac{14}{3}-\frac43=\frac{10}{3}$$</p>
+<p>重要陷阱：</p>
+<ul><li>曲线在 $x$ 轴<strong>下方</strong>的区间上，定积分为负，面积要取绝对值（分段计算：$x$ 轴上方一段、下方一段）。</li><li>若曲线在区间内穿过 $x$ 轴，必须<strong>先求交点</strong>分段，不能一次积分当作面积。</li><li>求"曲线与直线围成的面积"时：先求交点定上下限，再积分（上曲线 $-$ 下曲线）。</li></ul>
+<p>由导数求原函数的逆用：若已知 $\mathrm{f}'(x)$ 与某一点的函数值，可积分求出 $\mathrm{f}(x)$（含常数 $c$，用已知点定出 $c$）。</p>
+<h4>常见失分点</h4>
+<ul><li>不定积分漏 $+c$。</li><li>忘写方括号与上下限代值过程（会被判为跳步）。</li><li>$x$ 轴下方区域忘记取绝对值或分段。</li><li>曲线与直线的交点算错，导致上下限错误。</li></ul><h3 id="P8_积分-ex">例题（4 道）</h3><div class="ex"><h4>例 1</h4><p>求 $\displaystyle\int\left(2x^3-\frac{4}{x^2}+3\right)\mathrm{d}x$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>化为幂：$\displaystyle\int\left(2x^3-4x^{-2}+3\right)\mathrm{d}x$</p>
+<p>$$=\frac{2x^4}{4}-\frac{4x^{-1}}{-1}+3x+c=\frac{x^4}{2}+\frac{4}{x}+3x+c$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>求曲线 $y=4-x^2$ 与 $x$ 轴围成的面积。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>先求交点：$4-x^2=0\Rightarrow x=\pm2$。在 $[-2,2]$ 上 $y\ge0$。</p>
+<p>$$\text{面积}=\int_{-2}^{2}(4-x^2)\,\mathrm{d}x=\left[4x-\frac{x^3}{3}\right]_{-2}^{2}$$ $$=\left(8-\frac83\right)-\left(-8+\frac83\right)=\frac{16}{3}+\frac{16}{3}=\frac{32}{3}$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>求曲线 $y=x^2$ 与直线 $y=2x+3$ 围成的面积。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>交点：$x^2=2x+3\Rightarrow x^2-2x-3=0\Rightarrow (x-3)(x+1)=0$，$x=-1,\ 3$。</p>
+<p>在 $[-1,3]$ 上直线在上（取 $x=0$ 验：$3&gt;0$）。</p>
+<p>$$\text{面积}=\int_{-1}^{3}\bigl(2x+3-x^2\bigr)\,\mathrm{d}x=\left[x^2+3x-\frac{x^3}{3}\right]_{-1}^{3}$$ $$=(9+9-9)-\left(1-3+\frac13\right)=9-\left(-\frac53\right)=\frac{32}{3}$$</p></div></details></div><div class="ex"><h4>例 4</h4><p>已知 $\mathrm{f}'(x)=3x^2-2$ 且 $\mathrm{f}(1)=4$，求 $\mathrm{f}(x)$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathrm{f}(x)=\int(3x^2-2)\,\mathrm{d}x=x^3-2x+c$$</p>
+<p>代入 $(1,4)$：$1-2+c=4\Rightarrow c=5$。故 $\mathrm{f}(x)=x^3-2x+5$。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P8_积分">练习页</a>，可隐藏答案自测。</p><h2 id="P9_向量">P9 · 向量 Vectors</h2><p class="note">考纲编号 Topic 9（Paper 1 纯数）｜ AS 向量只在二维；它与力学里的力、速度共用同一套语言。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>9.1 使用<strong>二维向量</strong>。</p></li><li><p>9.2 计算向量的<strong>模与方向</strong>，并在<strong>分量形式</strong>与<strong>模/方向形式</strong>之间转换。</p></li><li><p>9.3 <strong>图解</strong>向量相加；进行向量加法与<strong>数乘</strong>的代数运算，并理解其几何意义。</p></li><li><p>9.4 理解并使用<strong>位置向量</strong>；计算两个由位置向量表示的点之间的<strong>距离</strong>。</p></li><li><p>9.5 用向量解决<strong>纯数学问题与实际问题</strong>（包括力）。</p></li></ul><h3>知识点</h3><h4>9.1 表示法</h4>
+<ul><li>列向量：$\begin{pmatrix}3\\-2\end{pmatrix}$</li><li>基向量：$\mathbf{i}=\begin{pmatrix}1\\0\end{pmatrix}$，$\mathbf{j}=\begin{pmatrix}0\\1\end{pmatrix}$，故 $\begin{pmatrix}3\\-2\end{pmatrix}=3\mathbf{i}-2\mathbf{j}$</li><li>有向线段：$\overrightarrow{AB}= \mathbf{b}-\mathbf{a}$（终点位置向量减起点位置向量）</li></ul>
+<h4>9.2 模与方向</h4>
+<p>$$|\mathbf{a}|=\sqrt{x^2+y^2}$$</p>
+<p>方向角 $\theta$（从正 $x$ 轴逆时针）：</p>
+<p>$$\tan\theta=\frac{y}{x}\quad\text{（落在第几象限要按 }x,y\text{ 的符号判断）}$$</p>
+<p>分量 $\to$ 模与方向：</p>
+<p>$$\mathbf{a}=\begin{pmatrix}x\\y\end{pmatrix}=\begin{pmatrix}|\mathbf{a}|\cos\theta\\ |\mathbf{a}|\sin\theta\end{pmatrix}$$</p>
+<p>模与方向 $\to$ 分量：已知 $|\mathbf{a}|=r$、方向 $\theta$，则 $\mathbf{a}=\begin{pmatrix}r\cos\theta\\ r\sin\theta\end{pmatrix}$。</p>
+<p>单位向量：$\hat{\mathbf{a}}=\dfrac{\mathbf{a}}{|\mathbf{a}|}$，模为 $1$。</p>
+<h4>9.3 加法与数乘</h4>
+<p>$$\begin{pmatrix}a\\b\end{pmatrix}+\begin{pmatrix}c\\d\end{pmatrix}=\begin{pmatrix}a+c\\ b+d\end{pmatrix},\qquad k\begin{pmatrix}a\\b\end{pmatrix}=\begin{pmatrix}ka\\ kb\end{pmatrix}$$</p>
+<p>几何意义：</p>
+<ul><li>加法：三角形法则 / 平行四边形法则；</li><li>数乘 $k$：方向不变（$k&gt;0$）或反向（$k&lt;0$），长度变为 $|k|$ 倍。</li></ul>
+<p>共线（平行）判定：$\mathbf{a}=k\mathbf{b}$（存在标量 $k$）。</p>
+<h4>9.4 位置向量与距离</h4>
+<p>点 $P$ 的位置向量 $\overrightarrow{OP}=\mathbf{p}$。</p>
+<p>$$|\overrightarrow{AB}|=|\mathbf{b}-\mathbf{a}|=\sqrt{(x_b-x_a)^2+(y_b-y_a)^2}$$</p>
+<p>中点位置向量：$\dfrac{\mathbf{a}+\mathbf{b}}{2}$。</p>
+<h4>9.5 应用</h4>
+<ul><li>几何证明：证明三点共线（两向量平行且有公共点）、求交点（参数相等）、证明图形是平行四边形等。</li><li>力学：力、速度、位移都是向量；合力为向量和；平衡条件是合力为零向量。</li></ul>
+<h4>常见失分点</h4>
+<ul><li>方向角象限判断错误（$\tan^{-1}(y/x)$ 只给主值）。</li><li>$\overrightarrow{AB}$ 写成 $\mathbf{a}-\mathbf{b}$（顺序反了）。</li><li>忘记单位向量的模是 $1$。</li></ul><h3 id="P9_向量-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>$\mathbf{a}=\begin{pmatrix}-3\\4\end{pmatrix}$。（a）求 $|\mathbf{a}|$；（b）求 $\mathbf{a}$ 与正 $x$ 轴的夹角；（c）求 $\mathbf{a}$ 方向的单位向量。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）$|\mathbf{a}|=\sqrt{9+16}=5$。</p>
+<p>（b）在第二象限（$x&lt;0,\ y&gt;0$）。$\tan^{-1}\!\left(\dfrac{4}{3}\right)=53.1^\circ$，故 $\theta=180^\circ-53.1^\circ=126.9^\circ$。</p>
+<p>（c）$\hat{\mathbf{a}}=\dfrac15\begin{pmatrix}-3\\4\end{pmatrix}=\begin{pmatrix}-0.6\\0.8\end{pmatrix}$。</p></div></details></div><div class="ex"><h4>例 2</h4><p>一个向量模为 $8$，方向为 $-30^\circ$（即从正 $x$ 轴顺时针 $30^\circ$）。写成分量形式。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\begin{pmatrix}8\cos(-30^\circ)\\ 8\sin(-30^\circ)\end{pmatrix}=\begin{pmatrix}8\cdot 0.866\\ 8\cdot(-0.5)\end{pmatrix}=\begin{pmatrix}6.93\\-4\end{pmatrix}$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>$A$、$B$、$C$ 的位置向量分别为 $\mathbf{a}=\begin{pmatrix}1\\2\end{pmatrix}$、$\mathbf{b}=\begin{pmatrix}5\\4\end{pmatrix}$、$\mathbf{c}=\begin{pmatrix}11\\7\end{pmatrix}$。判断三点是否共线。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\overrightarrow{AB}=\begin{pmatrix}4\\2\end{pmatrix},\qquad \overrightarrow{BC}=\begin{pmatrix}6\\3\end{pmatrix}$$</p>
+<p>$\overrightarrow{BC}=\dfrac32\overrightarrow{AB}$，两向量平行且有公共点 $B$，故 $A,B,C$ 共线。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#P9_向量">练习页</a>，可隐藏答案自测。</p><h2 id="S1_统计抽样">S1 · 统计抽样 Statistical sampling</h2><p class="note">考纲编号 Topic 1（Paper 2 统计）｜ Paper 2 的第一块，题目多为"解释/评价"型，写满要点即得分。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>1.1 理解并使用<strong>总体</strong>（population）与<strong>样本</strong>（sample）两个术语；用样本对总体作<strong>非形式化的推断</strong>；理解并使用抽样方法，包括<strong>简单随机抽样</strong>（simple random sampling）与<strong>机会抽样</strong>（opportunity sampling）；在解决统计问题的情境中<strong>选择或评价</strong>抽样方法，包括理解<strong>不同的样本可能得出关于总体的不同结论</strong>。</p></li></ul><h3>知识点</h3><h4>总体与样本</h4>
+<ul><li><strong>总体</strong>：研究对象的全体（如"全英国 17 岁学生的身高"）。</li><li><strong>样本</strong>：从总体中抽取、实际测量的那一部分。</li><li>抽样的目的：用样本的特征<strong>推断</strong>总体的特征，因为普查（census）成本高、耗时长，有时甚至不可能（如破坏性检测）。</li></ul>
+<p>相关术语：</p>
+<ul><li><strong>抽样单位</strong>（sampling unit）：总体中可被抽到的个体。</li><li><strong>抽样框</strong>（sampling frame）：所有抽样单位的名单（如学生名册）。抽样框质量直接决定抽样质量——名单过时或不完整会引入偏差。</li><li><strong>普查</strong>（census）：测量总体中的每一个个体。</li></ul>
+<h4>简单随机抽样 simple random sampling</h4>
+<p>定义：总体中<strong>每一个大小为 $n$ 的样本被抽到的概率相等</strong>。</p>
+<p>操作：给每个抽样单位编号，用随机数表或计算器随机数生成 $n$ 个不重复的编号。</p>
+<p>优点：无主观选择，理论上无偏；每个单位机会均等。 缺点：需要完整的抽样框；总体很大时编号与抽取成本高；<strong>仍可能因偶然抽到不具代表性的样本</strong>（同一样本量下，不同样本给出不同结论）。</p>
+<h4>机会抽样 opportunity sampling</h4>
+<p>定义：从<strong>恰好方便获得</strong>的对象中抽取（如在学校门口拦下前 20 位学生）。</p>
+<p>优点：便宜、快速、易操作。 缺点：样本很可能<strong>不具代表性</strong>（地点的选择隐含了系统性偏差——校门口的人不代表全体学生）。</p>
+<h4>其他常见方法（对比理解，有助于评价题）</h4>
+<ul><li><strong>系统抽样</strong>（systematic sampling）：按固定间隔抽取（名单中每隔 $k$ 个取一个）。优点是覆盖均匀；缺点是若名单存在周期性规律会产生偏差。</li><li><strong>分层抽样</strong>（stratified sampling）：把总体分成若干层（strata），按各层在总体中的比例抽取。优点是保证各子群体都有代表；缺点是需要知道各层的结构与比例。</li></ul>
+<h4>评价抽样的标准写法</h4>
+<p>题目常问"评论该抽样方法"或"说明该样本为何不具代表性"，答案要点：</p>
+<ol><li>抽样框是否完整、是否过期；</li><li>是否有系统性排除（如只在白天打电话 → 排除上班族）；</li><li>样本量是否足够小，导致偶然波动大；</li><li>不同的样本可能给出不同结论——这是考纲特别强调的一点。写答案时要说：<strong>"换一个样本，结论可能不同，因此这个结论带有不确定性"</strong>。</li></ol>
+<h4>常见失分点</h4>
+<ul><li>把"随机"理解成"随便"，写成"随机找了 20 个人"（未用随机数就不是随机抽样）。</li><li>只说"样本太小"，没说明后果（结论不稳定/不同样本结论不同）。</li><li>忘记指出抽样框的问题。</li></ul><h3 id="S1_统计抽样-ex">例题（2 道）</h3><div class="ex"><h4>例 1</h4><p>某校有 $850$ 名学生，校长想了解学生对食堂的满意度，计划抽取 $50$ 人。</p>
+<p>（a）说明如何用简单随机抽样抽取；（b）指出两个可能影响结论的问题。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）取全校学生名册作为抽样框，给每名学生编号 $001$–$850$；用随机数表或计算器生成 $50$ 个<strong>互不重复</strong>的编号（重复则跳过），抽取对应学生。</p>
+<p>（b）可能的问题：</p>
+<ul><li>名册若未及时更新（转学、休学），抽样框不完整，部分学生无机会被抽中；</li><li>样本量 $50$ 相对 $850$ 较小，偶然性大，换一个样本可能得到不同的满意度；</li><li>被抽中的学生若不回应（无回应偏差），实际有效样本可能偏向意见强烈的学生。</li></ul></div></details></div><div class="ex"><h4>例 2</h4><p>一名学生在周一上午 $8$ 点于图书馆门口询问 $30$ 位同学每周运动时长，据此估计全校平均运动时长。评论这一方法。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>这是<strong>机会抽样</strong>——样本来自"恰好在图书馆门口"的人。</p>
+<p>问题：</p>
+<ul><li>时间与地点带来系统性偏差：周一上午去图书馆的学生不能代表全体学生（运动队成员可能正在训练、走读生可能还没到校）；</li><li>样本量 $30$ 偏小，偶然波动大；</li><li>不同的样本（例如下午在运动场调查）很可能给出不同的平均值，因此结论不确定性大。</li></ul>
+<p>改进：用学生名册作抽样框做简单随机抽样，或按年级/性别分层抽样，并扩大样本量。</p></div></details></div><h3>练习</h3><p>本专题的 5 道练习题已放入<a href="as_math_practice.html#S1_统计抽样">练习页</a>，可隐藏答案自测。</p><h2 id="S2_数据呈现与解释">S2 · 数据呈现与解释 Data presentation and interpretation</h2><p class="note">考纲编号 Topic 2（Paper 2 统计）｜ 与官方"大数据集"（large data set）直接相关，直方图与标准差是必考。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>2.1 解释<strong>单变量数据</strong>的图表，包括理解<strong>直方图中面积代表频率</strong>；并与概率分布建立联系。</p></li><li><p>2.2 解释<strong>双变量数据</strong>的散点图与回归线，包括识别含明显分组的散点图（<strong>回归线的计算不作要求</strong>）；理解相关性的非形式化解释；理解<strong>相关不蕴含因果</strong>。</p></li><li><p>2.3 解释<strong>集中趋势与离散程度</strong>的度量，延伸到<strong>标准差</strong>；会用标准差计算，包括由<strong>汇总统计量</strong>计算。</p></li><li><p>2.4 识别并解释数据集与统计图中的<strong>可能异常值</strong>；在统计问题情境中<strong>选择或评价</strong>数据呈现方式；会<strong>清洗数据</strong>，包括处理缺失数据、错误与异常值。</p></li></ul><h3>知识点</h3><h4>2.1 直方图：面积 = 频率</h4>
+<p>这是 AS 最核心的一条：<strong>直方图的纵轴是频率密度</strong>（frequency density），不是频率。</p>
+<p>$$\text{频率密度}=\frac{\text{频率}}{\text{组距}},\qquad \text{频率}=\text{组距}\times\text{频率密度}=\text{矩形面积}$$</p>
+<p>因此：组距不同的组，柱子高度不能直接比较，要比较<strong>面积</strong>。</p>
+<p>由直方图读数据：把每个矩形的面积相加得总数；求某区间内的个数，就对该区间覆盖的部分矩形面积求和。</p>
+<h4>2.2 散点图与相关</h4>
+<ul><li><strong>正相关</strong>：点从左下到右上；<strong>负相关</strong>：点从左上到右下。</li><li>强/弱：点越贴近一条直线，相关越强。</li><li><strong>回归线</strong>（regression line）用于根据一个变量预测另一个；AS 只要求<strong>解释</strong>已有的回归线，<strong>不要求计算</strong>。</li><li><strong>分组现象</strong>：散点图若出现明显分开的几簇（如男女两组），整体相关性与分组内的相关性可能完全不同，甚至方向相反。</li><li><strong>相关不蕴含因果</strong>（correlation does not imply causation）：两个变量相关，可能是因为第三个变量同时影响二者（如冰淇淋销量与溺水人数都受气温影响），也可能是巧合。写答案时不能说"A 导致 B"。</li></ul>
+<h4>2.3 集中趋势与离散</h4>
+<p>$$\bar x=\frac{\sum x}{n}=\frac{\sum fx}{\sum f}\quad(\text{分组数据用组中值})$$</p>
+<p>方差与标准差（公式册给出 $S_{xx}$ 形式）：</p>
+<p>$$S_{xx}=\sum(x_i-\bar x)^2=\sum x_i^2-\frac{(\sum x_i)^2}{n}$$</p>
+<p>$$\text{方差}=\frac{S_{xx}}{n},\qquad \text{标准差}=\sqrt{\frac{S_{xx}}{n}}=\sqrt{\frac{\sum x^2}{n}-\bar x^{\,2}}$$</p>
+<p>四分位数与离散度：</p>
+<ul><li>中位数 $Q_2$、下四分位 $Q_1$、上四分位 $Q_3$；</li><li><strong>四分位距</strong> $\mathrm{IQR}=Q_3-Q_1$（公式册给出）；</li><li>箱线图（box plot）展示最小值、$Q_1$、中位数、$Q_3$、最大值及异常值。</li></ul>
+<p>由汇总统计量计算（常见考法）：题目给出 $\sum x$、$\sum x^2$、$n$，直接套上式；若数据经过线性编码 $y=\dfrac{x-a}{b}$，则 $\bar y=\dfrac{\bar x-a}{b}$，$\sigma_y=\dfrac{\sigma_x}{b}$（编码只改变尺度与位置，加减不影响离散度）。</p>
+<h4>2.4 异常值与数据清洗</h4>
+<p>常用判据：</p>
+<ul><li>小于 $Q_1-1.5\times\mathrm{IQR}$ 或大于 $Q_3+1.5\times\mathrm{IQR}$；</li><li>或距均值超过 $2$ 个（或 $3$ 个）标准差。</li></ul>
+<p>识别之后要<strong>判断如何处理</strong>，并在答案里说明理由：</p>
+<ul><li><strong>保留</strong>：异常值可能是真实且重要的（如极端天气、罕见疾病）。</li><li><strong>剔除/修正</strong>：若能确认是录入错误（如身高 $17.2$ m）、单位错误或测量故障。</li></ul>
+<p>数据清洗还包括：处理<strong>缺失值</strong>（可删除该记录、或用均值/中位数填补——需说明选择的理由）、统一单位、纠正明显错误。</p>
+<h4>常见失分点</h4>
+<ul><li>把直方图纵轴当频率，直接读高度。</li><li>用回归线外推到数据范围之外（extrapolation）——不可靠。</li><li>说"A 引起 B"。</li><li>异常值一律删除而不说明理由。</li></ul><h3 id="S2_数据呈现与解释-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>某组学生每周运动时间（小时）的直方图：区间 $[0,2)$ 频率密度 $5$；$[2,5)$ 频率密度 $8$；$[5,10)$ 频率密度 $4$。求总人数与运动 $5$ 小时以上的人数。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$[0,2)$：面积 $=2\times5=10$；$[2,5)$：$3\times8=24$；$[5,10)$：$5\times4=20$。</p>
+<p>总人数 $=10+24+20=54$。运动 $5$ 小时以上 $=20$ 人。</p></div></details></div><div class="ex"><h4>例 2</h4><p>已知 $n=8$，$\sum x=40$，$\sum x^2=250$。求均值与标准差。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\bar x=\frac{40}{8}=5$$</p>
+<p>$$S_{xx}=250-\frac{40^2}{8}=250-200=50$$</p>
+<p>$$\text{方差}=\frac{50}{8}=6.25,\qquad \text{标准差}=\sqrt{6.25}=2.5$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>一组数据：$12,\ 15,\ 14,\ 13,\ 96,\ 16,\ 14$。指出异常值并说明如何处理。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$96$ 明显偏离其余数据（均在 $12$–$16$），是可能异常值。</p>
+<p>处理：先核查原始记录。若确认是录入或单位错误（如应为 $9.6$），应修正；若无法确认，应<strong>保留并同时报告含与不含该值的两种结果</strong>，或说明它对均值影响很大（含 $96$ 时均值被显著抬高），此时中位数比均值更稳健。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#S2_数据呈现与解释">练习页</a>，可隐藏答案自测。</p><h2 id="S3_概率">S3 · 概率 Probability</h2><p class="note">考纲编号 Topic 3（Paper 2 统计）｜ 内容简短但常与二项分布、假设检验组合出题。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>3.1 理解并使用<strong>互斥</strong>（mutually exclusive）与<strong>独立</strong>（independent）事件的概念来计算概率；并与离散分布、连续分布建立联系。</p></li></ul><h3>知识点</h3><h4>基本关系</h4>
+<ul><li>任意事件：$\mathrm{P}(A')=1-\mathrm{P}(A)$（公式册给出）。</li><li>加法公式：$\mathrm{P}(A\cup B)=\mathrm{P}(A)+\mathrm{P}(B)-\mathrm{P}(A\cap B)$。</li></ul>
+<h4>互斥事件 mutually exclusive</h4>
+<p>两个事件<strong>不能同时发生</strong>：$\mathrm{P}(A\cap B)=0$。</p>
+<p>此时 $\mathrm{P}(A\cup B)=\mathrm{P}(A)+\mathrm{P}(B)$。</p>
+<p>例：掷一枚骰子，"得到 $2$"与"得到 $5$"互斥。</p>
+<p>注意：互斥 $\neq$ 互补。互补还要求 $\mathrm{P}(A)+\mathrm{P}(B)=1$。</p>
+<h4>独立事件 independent</h4>
+<p>一个事件发生<strong>不影响</strong>另一个的概率：</p>
+<p>$$\mathrm{P}(A\cap B)=\mathrm{P}(A)\,\mathrm{P}(B)$$</p>
+<p>这才是独立的定义式，也是判断独立的依据（不是"看起来没关系"）。</p>
+<p>例：连续两次掷硬币，第一次的结果与第二次独立。</p>
+<h4>工具：文氏图与树图</h4>
+<ul><li><strong>文氏图</strong>（Venn diagram）：适合两个或三个事件的交、并、补关系，常用于"已知 $\mathrm{P}(A)$、$\mathrm{P}(B)$、$\mathrm{P}(A\cap B)$ 求其他"。</li><li><strong>树图</strong>（tree diagram）：适合<strong>分阶段</strong>试验，边上标条件概率，路径相乘、同终点相加。有放回时各阶段独立；<strong>无放回时概率会变</strong>（第二次的概率依赖第一次的结果）。</li></ul>
+<h4>与分布的联系</h4>
+<p>重复 $n$ 次<strong>独立</strong>的"成功/失败"试验（每次成功概率 $p$ 不变），成功次数服从<strong>二项分布</strong>——独立性正是二项分布成立的前提之一。</p>
+<h4>常见失分点</h4>
+<ul><li>把互斥与独立混为一谈：互斥事件（除零概率情形）<strong>一定不独立</strong>（因为一个发生就排除另一个）。</li><li>无放回抽样仍按独立处理（概率应随剩余数量变化）。</li><li>忘记 $\mathrm{P}(A\cup B)$ 中要减去交集。</li></ul><h3 id="S3_概率-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>已知 $\mathrm{P}(A)=0.6$，$\mathrm{P}(B)=0.5$，$\mathrm{P}(A\cap B)=0.2$。求 $\mathrm{P}(A\cup B)$、$\mathrm{P}(A'\cap B)$ 及只属于 $A$ 的概率。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathrm{P}(A\cup B)=0.6+0.5-0.2=0.9$$</p>
+<p>$$\mathrm{P}(A'\cap B)=\mathrm{P}(B)-\mathrm{P}(A\cap B)=0.5-0.2=0.3$$</p>
+<p>只属于 $A$：$\mathrm{P}(A)-\mathrm{P}(A\cap B)=0.6-0.2=0.4$。</p></div></details></div><div class="ex"><h4>例 2</h4><p>袋中 $4$ 红 $6$ 蓝球，无放回连取两球。求两球同色的概率。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>第一次取后总数由 $10$ 变为 $9$，且剩余红球数取决于第一次结果——这就是"无放回导致不独立"。</p>
+<p>两红：$\dfrac{4}{10}\cdot\dfrac{3}{9}=\dfrac{12}{90}$</p>
+<p>两蓝：$\dfrac{6}{10}\cdot\dfrac{5}{9}=\dfrac{30}{90}$</p>
+<p>合计：$\dfrac{12}{90}+\dfrac{30}{90}=\dfrac{42}{90}=\dfrac{7}{15}$</p></div></details></div><div class="ex"><h4>例 3</h4><p>已知 $\mathrm{P}(A)=0.4$，$\mathrm{P}(B)=0.7$，$\mathrm{P}(A\cap B)=0.28$。判断 $A$ 与 $B$ 是否独立。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$\mathrm{P}(A)\mathrm{P}(B)=0.4\times0.7=0.28=\mathrm{P}(A\cap B)$，满足独立定义式，故<strong>独立</strong>。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#S3_概率">练习页</a>，可隐藏答案自测。</p><h2 id="S4_统计分布">S4 · 统计分布 Statistical distributions</h2><p class="note">考纲编号 Topic 4（Paper 2 统计）｜ AS 只要求<strong>二项分布</strong>；计算离散随机变量的均值与方差不作要求。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>4.1 理解并使用<strong>简单的离散概率分布</strong>（<strong>不含</strong>离散随机变量均值与方差的计算），包括<strong>二项分布</strong>作为模型；会用二项分布计算概率。</p></li></ul><h3>知识点</h3><h4>离散概率分布</h4>
+<p>离散随机变量 $X$ 只能取有限个（或可列的）值，每个取值对应一个概率，所有概率之和为 $1$：</p>
+<p>$$\sum \mathrm{P}(X=x)=1$$</p>
+<p>这条性质有两个用途：求出未知参数、检验给出的分布是否成立。</p>
+<h4>二项分布的条件（BINS）</h4>
+<p>使用二项分布前必须检查四个条件：</p>
+<ul><li><strong>B</strong>inary：每次试验只有两种结果（成功/失败）；</li><li><strong>I</strong>ndependent：各次试验相互独立；</li><li><strong>N</strong>umber fixed：试验次数 $n$ 固定；</li><li><strong>S</strong>ame probability：每次成功概率 $p$ 相同。</li></ul>
+<p>记作 $X\sim \mathrm{B}(n,p)$。</p>
+<h4>二项概率公式</h4>
+<p>$$\mathrm{P}(X=r)=\binom{n}{r}p^{r}(1-p)^{n-r},\qquad r=0,1,\dots,n$$</p>
+<p>其中 $\displaystyle\binom nr$ 就是 P4 二项展开里的组合数。所有项之和为 $1$，对应 $(p+q)^n$ 的展开。</p>
+<p>三种常见问法：</p>
+<ol><li><strong>恰好</strong>：$\mathrm{P}(X=r)$；</li><li><strong>至多</strong>：$\mathrm{P}(X\le r)$，逐项相加或用<strong>累积分布表</strong>（公式册提供 Binomial Cumulative Distribution Function）；</li><li><strong>至少</strong>：$\mathrm{P}(X\ge r)=1-\mathrm{P}(X\le r-1)$——这一步转换最容易出错，务必分清是否包含端点。</li></ol>
+<p>用累积表：$F(r)=\mathrm{P}(X\le r)$，则 $\mathrm{P}(X\ge r)=1-F(r-1)$，$\mathrm{P}(a\le X\le b)=F(b)-F(a-1)$。</p>
+<h4>常见失分点</h4>
+<ul><li>没检查独立性就套二项分布（无放回抽样要用超几何思路，不是二项）。</li><li>"至少"与"超过"混淆：$\mathrm{P}(X&gt;3)=\mathrm{P}(X\ge4)$。</li><li>忘记 $p$ 是"成功"的概率，把题目给的失败率直接代入。</li></ul><h3 id="S4_统计分布-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>某射手每次命中概率 $0.4$，独立射击 $6$ 次。求恰好命中 $3$ 次的概率。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$X\sim\mathrm{B}(6,0.4)$。</p>
+<p>$$\mathrm{P}(X=3)=\binom63(0.4)^3(0.6)^3=20\times0.064\times0.216=0.2765$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>同上，求至少命中 $4$ 次的概率。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathrm{P}(X\ge4)=\mathrm{P}(X=4)+\mathrm{P}(X=5)+\mathrm{P}(X=6)$$</p>
+<p>$$=\binom64(0.4)^4(0.6)^2+\binom65(0.4)^5(0.6)+(0.4)^6$$ $$=15(0.0256)(0.36)+6(0.01024)(0.6)+0.004096$$ $$=0.1382+0.0369+0.0041=0.1792$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>$X\sim\mathrm{B}(12,0.35)$，查表得 $F(4)=0.5833$，$F(7)=0.9745$。求 $\mathrm{P}(5\le X\le7)$ 与 $\mathrm{P}(X\ge8)$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathrm{P}(5\le X\le7)=F(7)-F(4)=0.9745-0.5833=0.3912$$</p>
+<p>$$\mathrm{P}(X\ge8)=1-F(7)=1-0.9745=0.0255$$</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#S4_统计分布">练习页</a>，可隐藏答案自测。</p><h2 id="S5_假设检验">S5 · 统计假设检验 Statistical hypothesis testing</h2><p class="note">考纲编号 Topic 5（Paper 2 统计）｜ AS 的检验只针对<strong>二项分布的比例 $p$</strong>，套路固定，是 Paper 2 的必拿分题。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>5.1 理解并应用统计假设检验的<strong>语言</strong>：原假设、备择假设、显著性水平、检验统计量、单尾检验、双尾检验、临界值、临界域、接受域、$p$ 值。</p></li><li><p>5.2 对<strong>二项分布中的比例</strong>进行假设检验，并在<strong>情境中解释结果</strong>；理解用样本对总体作推断、显著性水平就是<strong>错误拒绝原假设的概率</strong>。</p></li></ul><h3>知识点</h3><h4>五个术语必须写准</h4>
+<ul><li><strong>原假设 $H_0$</strong>：默认成立的假设，写为 $H_0:p=0.4$（含等号）。</li><li><strong>备择假设 $H_1$</strong>：想要找证据支持的假设，$H_1:p&gt;0.4$、$p&lt;0.4$ 或 $p\neq0.4$。</li><li><strong>显著性水平</strong>（significance level）：通常 $5\%$ 或 $10\%$，是"当 $H_0$ 为真时仍错误拒绝它"的概率上限。</li><li><strong>检验统计量</strong>：这里就是观测到的成功次数 $X$。</li><li><strong>临界域</strong>（critical region）与<strong>接受域</strong>：使拒绝 $H_0$ 的取值集合 / 其余取值集合；边界值称<strong>临界值</strong>。</li><li><strong>$p$ 值</strong>：在 $H_0$ 成立时，观测到<strong>至少同样极端</strong>结果的概率。$p$ 值 $&lt;$ 显著性水平则拒绝 $H_0$。</li></ul>
+<h4>单尾与双尾</h4>
+<ul><li>$H_1:p&gt;p_0$ → 单尾（右尾），$H_1:p&lt;p_0$ → 单尾（左尾）；</li><li>$H_1:p\neq p_0$ → <strong>双尾</strong>，显著性水平要<strong>分到两端</strong>（$5\%$ 的检验每端 $2.5\%$）。</li></ul>
+<h4>二项检验的固定流程（关键：看哪一端"更极端"）</h4>
+<p>设 $X\sim\mathrm{B}(n,p_0)$（$p_0$ 是 $H_0$ 中的值）。</p>
+<ol><li>写出 $H_0$ 与 $H_1$（<strong>必须含符号且说明 $p$ 的含义</strong>）。</li><li>确定方向：若 $H_1:p&gt;p_0$，极端方向在<strong>右侧</strong>，计算 $\mathrm{P}(X\ge x_{\text{obs}})$；若 $H_1:p&lt;p_0$，计算 $\mathrm{P}(X\le x_{\text{obs}})$（$x_{\text{obs}}$ 是实际观测值）。</li><li>与显著性水平比较：概率 $\le\alpha$ 则<strong>拒绝 $H_0$</strong>；否则<strong>不拒绝 $H_0$</strong>。</li><li>用<strong>题目情境</strong>写出结论（"有证据表明……" / "没有足够证据表明……"）。</li></ol>
+<p>也可以反过来先求临界域：找出使 $\mathrm{P}(X\ge c)\le\alpha$ 的最小 $c$，临界域为 $X\ge c$；再看观测值是否落入。</p>
+<h4>结论的写法（最容易丢分）</h4>
+<ul><li>拒绝 $H_0$ 时：<strong>"有足够证据（在 $5\%$ 水平）表明 ……"</strong>，不能说"证明了……"。</li><li>不拒绝 $H_0$ 时：<strong>"没有足够证据表明 ……"</strong>，<strong>不能</strong>说"$H_0$ 为真"或"接受 $H_0$"（严格讲只是证据不足）。</li><li>必须回到情境：说明这个结论对实际问题意味着什么。</li></ul>
+<h4>两类错误（理解层面）</h4>
+<ul><li>第 I 类错误：$H_0$ 为真却拒绝它，概率就是显著性水平 $\alpha$。</li><li>第 II 类错误：$H_0$ 为假却没有拒绝它。</li></ul>
+<h4>常见失分点</h4>
+<ul><li>忘记说明 $p$ 代表什么（"设 $p$ 为……的比例"）。</li><li>方向搞反：观测值大于期望却算左尾概率。</li><li>结论写成"接受 $H_0$"或"证明了"。</li></ul><h3 id="S5_假设检验-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>厂家声称其生产的芯片有 $40\%$ 为 A 级。检验员随机抽取 $20$ 片，发现 $12$ 片为 A 级。在 $5\%$ 水平检验"实际比例高于 $40\%$"。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>设 $p$ 为 A 级芯片的真实比例。</p>
+<p>$$H_0:p=0.4,\qquad H_1:p&gt;0.4$$</p>
+<p>在 $H_0$ 下 $X\sim\mathrm{B}(20,0.4)$，观测值 $x=12$。</p>
+<p>$$\mathrm{P}(X\ge12)=1-\mathrm{P}(X\le11)$$</p>
+<p>用累积表：$\mathrm{P}(X\le11)=0.9435$，故 $\mathrm{P}(X\ge12)=0.0565$。</p>
+<p>$0.0565&gt;0.05$，<strong>不拒绝 $H_0$</strong>。</p>
+<p>结论：在 $5\%$ 显著性水平下，没有足够证据表明 A 级芯片比例高于 $40\%$。（注意：这不等于证明了比例就是 $40\%$。）</p></div></details></div><div class="ex"><h4>例 2</h4><p>某硬币被怀疑偏向反面。掷 $30$ 次得正面 $9$ 次。在 $5\%$ 水平检验硬币是否偏向反面，并给出临界域。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>设 $p$ 为掷出正面的概率。</p>
+<p>$$H_0:p=0.5,\qquad H_1:p&lt;0.5$$</p>
+<p>在 $H_0$ 下 $X\sim\mathrm{B}(30,0.5)$，观测值 $x=9$。</p>
+<p>$$\mathrm{P}(X\le9)=0.0214\quad(\text{查累积表})$$</p>
+<p>$0.0214&lt;0.05$，<strong>拒绝 $H_0$</strong>。</p>
+<p>结论：有足够证据表明该硬币偏向反面（正面概率小于 $0.5$）。</p>
+<p>临界域：找出使 $\mathrm{P}(X\le c)\le0.05$ 的最大 $c$。查表 $\mathrm{P}(X\le10)=0.0494\le0.05$，$\mathrm{P}(X\le11)=0.1002&gt;0.05$，故临界域为 $X\le10$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>在 $10\%$ 水平检验 $H_0:p=0.5$ 对 $H_1:p\neq0.5$，$n=12$，观测 $x=2$。说明如何分配显著性水平。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>双尾检验把 $10\%$ 分到两端，每端 $5\%$。</p>
+<p>左尾：$\mathrm{P}(X\le2)$（查 $\mathrm{B}(12,0.5)$ 表）$=0.0193&lt;0.05$。</p>
+<p>已落入临界域，<strong>拒绝 $H_0$</strong>。结论：有足够证据表明 $p\neq0.5$（且观测偏低，说明 $p&lt;0.5$）。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#S5_假设检验">练习页</a>，可隐藏答案自测。</p><h2 id="M6_量与单位">M6 · 力学中的量与单位 Quantities and units in mechanics</h2><p class="note">考纲编号 Topic 6（Paper 2 力学）｜ 短小但贯穿所有力学题：单位写错会连带丢分。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>6.1 理解并使用国际单位制（S.I.）中的<strong>基本量</strong>：<strong>长度、时间、质量</strong>；理解并使用<strong>导出量</strong>与单位：<strong>速度、加速度、力、重量</strong>。</p></li></ul><h3>知识点</h3><h4>基本量与单位</h4>
+<table><thead><tr><th>基本量</th><th>S.I. 基本单位</th><th>符号</th></tr></thead><tbody><tr><td>长度 length</td><td>米 metre</td><td>m</td></tr><tr><td>时间 time</td><td>秒 second</td><td>s</td></tr><tr><td>质量 mass</td><td>千克 kilogram</td><td>kg</td></tr></tbody></table>
+<p>注意：质量的单位是 <strong>kg</strong>，不是克；长度用 <strong>m</strong>，不是 cm——力学计算中若题目给的是 cm、分钟、克，<strong>先换算</strong>再代入公式。</p>
+<h4>导出量与单位</h4>
+<table><thead><tr><th>导出量</th><th>定义</th><th>单位</th></tr></thead><tbody><tr><td>速度 velocity</td><td>位移变化率</td><td>m s$^{-1}$</td></tr><tr><td>加速度 acceleration</td><td>速度变化率</td><td>m s$^{-2}$</td></tr><tr><td>力 force</td><td>由 $F=ma$ 定义</td><td>牛顿 N，$1\ \mathrm{N}=1\ \mathrm{kg\,m\,s^{-2}}$</td></tr><tr><td>重量 weight</td><td>$W=mg$</td><td>N（重量是<strong>力</strong>，不是质量）</td></tr></tbody></table>
+<h4>标量、矢量与"模型化"</h4>
+<p>考纲 OT3 要求理解<strong>建模假设</strong>（modelling assumptions）。力学里最常见的几个词：</p>
+<ul><li><strong>质点</strong>（particle）：忽略大小与形状，质量集中于一点，因此不考虑转动与空气阻力形状效应。</li><li><strong>光滑</strong>（smooth）：无摩擦；<strong>粗糙</strong>（rough）：有摩擦。</li><li><strong>轻绳/轻杆</strong>（light string/rod）：质量可忽略，绳上张力处处相同。</li><li><strong>不可伸长</strong>（inextensible）：长度不变，因此绳两端的加速度大小相等。</li><li><strong>匀速/匀加速</strong>（uniform）：速度或加速度恒定。</li></ul>
+<p>$g$（重力加速度）取 $9.8\ \mathrm{m\,s^{-2}}$，题目若指定 $9.8$ 或 $9.81$ 按题目要求用。</p>
+<h4>常见失分点</h4>
+<ul><li>重量与质量混用（"$W=5$ kg"是错的，应为 $W=5g\approx49$ N）。</li><li>单位未换算（速度给的是 km h$^{-1}$ 却直接代入 m s$^{-1}$ 的公式）。</li><li>答案不带单位或单位错误（N 写成 kg）。</li></ul><h3 id="M6_量与单位-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>一辆车以 $72\ \mathrm{km\,h^{-1}}$ 行驶，换算成 $\mathrm{m\,s^{-1}}$。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$72\ \mathrm{km\,h^{-1}}=\frac{72\times1000}{3600}\ \mathrm{m\,s^{-1}}=20\ \mathrm{m\,s^{-1}}$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>一个质量为 $3.5$ kg 的物体，求其重量（取 $g=9.8$）。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$W=mg=3.5\times9.8=34.3\ \mathrm{N}$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>力的单位为 $\mathrm{kg\,m\,s^{-2}}$。据此说明 $F=ma$ 在单位上是否自洽。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>右侧 $ma$ 的单位为 $\mathrm{kg}\times\mathrm{m\,s^{-2}}=\mathrm{kg\,m\,s^{-2}}$，与力的单位一致，公式在量纲上自洽（这也正是牛顿的定义方式）。</p></div></details></div><h3>练习</h3><p>本专题的 5 道练习题已放入<a href="as_math_practice.html#M6_量与单位">练习页</a>，可隐藏答案自测。</p><h2 id="M7_运动学">M7 · 运动学 Kinematics</h2><p class="note">考纲编号 Topic 7（Paper 2 力学）｜ 与纯数的微积分直接连通：位移—速度—加速度就是积分与求导。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>7.1 理解并使用运动学的语言：<strong>位置、位移、路程、速度、速率、加速度</strong>。</p></li><li><p>7.2 理解、使用并解释直线运动的各种图像：<strong>位移—时间图</strong>（梯度即速度）与<strong>速度—时间图</strong>（梯度即加速度、面积即位移）。</p></li><li><p>7.3 理解、使用并<strong>推导</strong>直线运动的<strong>匀加速公式</strong>。</p></li><li><p>7.4 在直线运动中使用<strong>微积分</strong>：$v=\dfrac{\mathrm{d}r}{\mathrm{d}t}$、$a=\dfrac{\mathrm{d}v}{\mathrm{d}t}=\dfrac{\mathrm{d}^2r}{\mathrm{d}t^2}$、$r=\displaystyle\int v\,\mathrm{d}t$、$v=\displaystyle\int a\,\mathrm{d}t$。</p></li></ul><h3>知识点</h3><h4>7.1 六术语（必须区分清楚）</h4>
+<table><thead><tr><th>术语</th><th>含义</th><th>类型</th></tr></thead><tbody><tr><td>位置 position</td><td>相对原点的位置</td><td>矢量</td></tr><tr><td>位移 displacement $s$</td><td>位置的变化（含方向）</td><td>矢量</td></tr><tr><td>路程 distance travelled</td><td>路径总长（不含方向）</td><td>标量</td></tr><tr><td>速度 velocity $v$</td><td>位移的变化率</td><td>矢量</td></tr><tr><td>速率 speed</td><td>速度的大小</td><td>标量</td></tr><tr><td>加速度 acceleration $a$</td><td>速度的变化率</td><td>矢量</td></tr></tbody></table>
+<p>关键区别：物体往返一次回到起点，<strong>位移为 $0$ 而路程不为 $0$</strong>；平均速度为 $0$，平均速率不为 $0$。</p>
+<h4>7.2 两类图像</h4>
+<p><strong>位移—时间图</strong>（$s$–$t$）：梯度 $=$ 速度。水平段表示静止；斜率为负表示反向运动。</p>
+<p><strong>速度—时间图</strong>（$v$–$t$）：</p>
+<ul><li>梯度 $=$ 加速度；</li><li><strong>曲线下面积 $=$ 位移</strong>（$x$ 轴下方的面积取负）；</li><li>求<strong>路程</strong>时要把下方面积的绝对值加上去。</li></ul>
+<p>匀加速运动在 $v$–$t$ 图上是直线，梯形面积即位移，这也是推导匀加速公式的图形途径。</p>
+<h4>7.3 匀加速公式（公式册给出，但要求会推导）</h4>
+<p>设初速 $u$、末速 $v$、加速度 $a$、位移 $s$、时间 $t$：</p>
+<p>$$v=u+at$$ $$s=ut+\tfrac12 at^2$$ $$s=vt-\tfrac12 at^2$$ $$v^2=u^2+2as$$ $$s=\tfrac12(u+v)t$$</p>
+<p>推导（两式相消即可得全部）：</p>
+<p>由 $a=\dfrac{v-u}{t}$ 得 $v=u+at$；平均速度 $\dfrac{u+v}{2}$ 乘时间得 $s=\dfrac12(u+v)t$；把 $v=u+at$ 代入得 $s=ut+\dfrac12at^2$；由 $t=\dfrac{v-u}{a}$ 代入 $s=\dfrac12(u+v)t$ 得 $v^2=u^2+2as$。</p>
+<h4>7.4 用微积分处理变加速运动</h4>
+<p>$$v=\frac{\mathrm{d}r}{\mathrm{d}t},\qquad a=\frac{\mathrm{d}v}{\mathrm{d}t}=\frac{\mathrm{d}^2r}{\mathrm{d}t^2}$$</p>
+<p>$$r=\int v\,\mathrm{d}t,\qquad v=\int a\,\mathrm{d}t$$</p>
+<p>标准题型：给定位移函数 $r(t)$，两次求导得速度与加速度；或给定 $a(t)$，积分得 $v$（用初速定常数）、再积分得 $r$。</p>
+<p><strong>转向判定</strong>：速度为 $0$ 时物体可能改变方向；求"最大位移"就令 $v=0$。求"总路程"要先找转向时刻，分段计算位移后取绝对值相加。</p>
+<p>自由落体：$a=-g$（取向上为正），或直接取向下为正、$a=g$。竖直上抛最高点速度为 $0$。</p>
+<h4>常见失分点</h4>
+<ul><li>位移与路程不分（$v$–$t$ 图面积直接当路程）。</li><li>忘记方向符号：取向上为正时 $a=-9.8$，正负写错结果全错。</li><li>变加速题仍套用匀加速公式。</li></ul><h3 id="M7_运动学-ex">例题（4 道）</h3><div class="ex"><h4>例 1</h4><p>一辆车以 $4\ \mathrm{m\,s^{-1}}$ 匀加速行驶，$a=2\ \mathrm{m\,s^{-2}}$，求 $6$ s 后的速度与这 $6$ s 内的位移。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$v=u+at=4+2(6)=16\ \mathrm{m\,s^{-1}}$$</p>
+<p>$$s=ut+\tfrac12at^2=4(6)+\tfrac12(2)(36)=24+36=60\ \mathrm{m}$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>小球以 $15\ \mathrm{m\,s^{-1}}$ 竖直上抛，取向上为正，$a=-9.8$。（a）最高高度；（b）回到出发点的时间。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）最高点 $v=0$：$v^2=u^2+2as\ \Rightarrow\ 0=225-19.6s\ \Rightarrow\ s=11.5\ \mathrm{m}$。</p>
+<p>（b）回到出发点 $s=0$：$0=15t-\tfrac12(9.8)t^2=15t-4.9t^2$，$t=0$ 或 $t=\dfrac{15}{4.9}=3.06\ \mathrm{s}$。</p></div></details></div><div class="ex"><h4>例 3</h4><p>质点位移 $r=2t^3-9t^2+12t$（$t\ge0$，单位 SI）。（a）求 $v$ 与 $a$ 的表达式；（b）求速度为 $0$ 的时刻；（c）求前 $3$ s 的路程。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>（a）$v=\dfrac{\mathrm{d}r}{\mathrm{d}t}=6t^2-18t+12$；$a=\dfrac{\mathrm{d}v}{\mathrm{d}t}=12t-18$。</p>
+<p>（b）$6t^2-18t+12=0\ \Rightarrow\ 6(t-1)(t-2)=0$，$t=1$ 与 $t=2$。</p>
+<p>（c）分段：$r(0)=0$；$r(1)=2-9+12=5$；$r(2)=16-36+24=4$；$r(3)=54-81+36=9$。</p>
+<p>路程 $=|5-0|+|4-5|+|9-4|=5+1+5=11\ \mathrm{m}$。（注意位移只有 $9$ m，路程是 $11$ m。）</p></div></details></div><div class="ex"><h4>例 4</h4><p>一个质点的 $v$–$t$ 图：$0$–$4$ s 速度由 $0$ 线性增至 $8\ \mathrm{m\,s^{-1}}$，$4$–$7$ s 保持 $8$，$7$–$10$ s 线性降至 $0$。求总位移与加速度各段的值。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>位移即梯形面积：$0$–$4$ s 三角形 $\dfrac12(4)(8)=16$；$4$–$7$ s 矩形 $3\times8=24$；$7$–$10$ s 三角形 $\dfrac12(3)(8)=12$。总位移 $=52\ \mathrm{m}$。</p>
+<p>加速度：$0$–$4$ s 为 $\dfrac{8}{4}=2$；$4$–$7$ s 为 $0$；$7$–$10$ s 为 $\dfrac{-8}{3}=-2.67$（单位 $\mathrm{m\,s^{-2}}$）。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#M7_运动学">练习页</a>，可隐藏答案自测。</p><h2 id="M8_力与牛顿定律">M8 · 力与牛顿定律 Forces and Newton's laws</h2><p class="note">考纲编号 Topic 8（Paper 2 力学）｜ AS 力学的核心；连接体（滑轮）题是经典大题。</p><h3>考纲要求 · What students need to learn</h3><ul class="chk"><li><p>8.1 理解<strong>力</strong>的概念；理解并使用<strong>牛顿第一定律</strong>。</p></li><li><p>8.2 理解并使用<strong>牛顿第二定律</strong>，用于直线运动（限定于两个互相垂直方向上的力，以及以二维向量给出的力的简单情形）。</p></li><li><p>8.3 理解并使用<strong>重量</strong>与<strong>重力下的直线运动</strong>；重力加速度 $g$ 及其在 S.I. 单位下的取值精度。</p></li><li><p>8.4 理解并使用<strong>牛顿第三定律</strong>；质点上力的<strong>平衡</strong>与直线运动；涉及<strong>光滑滑轮与连接质点</strong>的应用问题。</p></li></ul><h3>知识点</h3><h4>8.1 力与牛顿第一定律</h4>
+<p>力是矢量，单位是牛顿（N）。力可以改变物体的运动状态（产生加速度）或使物体形变。</p>
+<p><strong>牛顿第一定律</strong>：若合力为零，物体保持静止或匀速直线运动。</p>
+<p>推论：若物体静止或匀速直线运动，则<strong>合力为零</strong>（这是解题最常用的形式，即平衡条件）。</p>
+<h4>8.2 牛顿第二定律</h4>
+<p>$$\mathbf{F}=m\mathbf{a}\qquad\text{或}\qquad F=ma$$</p>
+<p>要点：</p>
+<ul><li>$\mathbf{F}$ 是<strong>合力</strong>（resultant force），不是某一个力；</li><li>方向与加速度方向一致；</li><li>单位是自洽的：$\mathrm{N}=\mathrm{kg\,m\,s^{-2}}$。</li></ul>
+<p>二维处理：把力分解到两个互相垂直的方向（通常是水平与竖直，或沿斜面与垂直斜面），<strong>每个方向独立列一个 $F=ma$</strong>。</p>
+<p>以向量形式给出力时：$\mathbf{F}_{\text{合}}=\mathbf{F}_1+\mathbf{F}_2$，再算 $\mathbf{a}=\dfrac{\mathbf{F}_{\text{合}}}{m}$。</p>
+<h4>8.3 重量</h4>
+<p>$$W=mg$$</p>
+<p>$g=9.8\ \mathrm{m\,s^{-2}}$（题目会指定精度）。重量方向竖直向下。<strong>重量是力，单位是 N</strong>，别与质量（kg）混淆。</p>
+<p>自由落体（忽略空气阻力）：$a=g$，与质量无关。</p>
+<h4>8.4 牛顿第三定律与连接体</h4>
+<p><strong>牛顿第三定律</strong>：A 对 B 的力与 B 对 A 的力<strong>大小相等、方向相反</strong>，且作用在<strong>不同物体</strong>上。</p>
+<p>最容易犯的错误：把"作用力与反作用力"当成"一对平衡力"。区别在于——平衡力作用在<strong>同一个物体</strong>上，作用力与反作用力作用在<strong>两个不同物体</strong>上，不能相互抵消。</p>
+<p><strong>连接体（光滑滑轮）题的标准解法</strong>：</p>
+<ol><li>画出每个物体的<strong>受力图</strong>（隔离体图），标出重量、张力、法向支持力、阻力等；</li><li>对每个物体沿运动方向列 $F=ma$（轻绳不可伸长 ⇒ 两物体加速度大小相等）；</li><li>联立方程解出 $a$ 与张力 $T$。</li></ol>
+<p>典型情形（质量 $m_1$ 悬挂、$m_2$ 在光滑水平桌面上、轻绳跨过光滑滑轮）：</p>
+<p>对 $m_1$（向下为正）：$m_1g-T=m_1a$</p>
+<p>对 $m_2$（向右为正）：$T=m_2a$</p>
+<p>联立：$a=\dfrac{m_1g}{m_1+m_2}$，$T=\dfrac{m_1m_2g}{m_1+m_2}$。</p>
+<h4>平衡</h4>
+<p>质点平衡 ⇔ 合力为零。两个力平衡则等大反向共线；三个力平衡常用<strong>力的三角形</strong>（首尾相接闭合）或分解到两个方向列方程。</p>
+<h4>常见失分点</h4>
+<ul><li>漏画某个力（尤其是法向支持力或绳的张力）。</li><li>把作用力—反作用力当成平衡力抵消。</li><li>连接体题中把两物体的加速度写成不同值。</li><li>忘记重量方向或把 $mg$ 写成质量。</li></ul><h3 id="M8_力与牛顿定律-ex">例题（3 道）</h3><div class="ex"><h4>例 1</h4><p>质量 $5$ kg 的箱子在水平方向受 $30$ N 推力，同时受 $10$ N 摩擦阻力。求加速度。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>水平方向合力 $=30-10=20$ N。</p>
+<p>$$a=\frac{20}{5}=4\ \mathrm{m\,s^{-2}}$$</p></div></details></div><div class="ex"><h4>例 2</h4><p>质量 $2$ kg 的质点受力 $\mathbf{F}_1=\begin{pmatrix}6\\4\end{pmatrix}$ N 与 $\mathbf{F}_2=\begin{pmatrix}-2\\-8\end{pmatrix}$ N。求加速度向量及其大小。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>$$\mathbf{F}_{\text{合}}=\begin{pmatrix}4\\-4\end{pmatrix}\ \mathrm{N},\qquad \mathbf{a}=\frac{1}{2}\begin{pmatrix}4\\-4\end{pmatrix}=\begin{pmatrix}2\\-2\end{pmatrix}\ \mathrm{m\,s^{-2}}$$</p>
+<p>$$|\mathbf{a}|=\sqrt{4+4}=2\sqrt2\approx2.83\ \mathrm{m\,s^{-2}}$$</p></div></details></div><div class="ex"><h4>例 3</h4><p>质量 $3$ kg 的物块悬挂在桌边，通过轻绳跨过光滑滑轮与桌面上 $2$ kg 的物块相连，桌面光滑。$g=9.8$。求加速度与绳的张力。</p><details open><summary>解答（点击展开/收起）</summary><div class="sol"><p>设加速度大小为 $a$，张力为 $T$。</p>
+<p>对悬挂物（向下为正）：$3g-T=3a$</p>
+<p>对桌面物（向右为正）：$T=2a$</p>
+<p>代入：$3(9.8)-2a=3a\ \Rightarrow\ 29.4=5a\ \Rightarrow\ a=5.88\ \mathrm{m\,s^{-2}}$</p>
+<p>$T=2a=11.76\approx11.8$ N。</p></div></details></div><h3>练习</h3><p>本专题的 6 道练习题已放入<a href="as_math_practice.html#M8_力与牛顿定律">练习页</a>，可隐藏答案自测。</p><div class="footer">内容依据 Pearson Edexcel AS Mathematics (8MA0) Specification （Issue 3, 2025）与官方公式手册编写；例题与练习为原创编写，用于讲练配套。</div></div>
+</div>
+<script>
+function toggleAll(open){
+  document.querySelectorAll('details').forEach(function(d){ d.open = open; });
+}
+</script>
+</body></html>

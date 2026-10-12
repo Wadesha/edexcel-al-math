@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>爱德思 AS 数学 · 公式手册</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\(','\)']], displayMath: [['$$','$$'], ['\[','\]']] }
+};
+</script>
+<script src="mathjax/tex-mml-svg.js" async></script>
+
+<link rel="stylesheet" href="_theme.css">
+<style>
+table.fx{width:100%;font-size:15px}
+table.fx td{border:1px solid var(--line);padding:7px 10px;vertical-align:middle}
+table.fx td.lb{width:34%;color:var(--dim);background:var(--panel2)}
+table.bt{font-size:12.5px;margin-bottom:18px}
+table.bt th,table.bt td{padding:3px 6px;text-align:center}
+table.bt .rk{background:var(--panel2);color:var(--acc2)}
+.tocbar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+.tocbar a{background:var(--panel2);border:1px solid var(--line);border-radius:6px;padding:5px 10px;font-size:13px}
+.calc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.calc label{font-size:13.5px;color:var(--dim);margin-right:6px}
+.calc input{background:var(--bg);border:1px solid var(--line);color:var(--fg);
+ border-radius:5px;padding:4px 8px;width:90px;margin-right:12px}
+.calc .res{margin-top:10px;font-size:15px}
+.calc .res b{color:var(--acc2)}
+.badge{display:inline-block;background:var(--panel2);border:1px solid var(--line);
+ border-radius:5px;padding:1px 8px;font-size:12.5px;color:var(--warn);margin-left:8px}
+</style></head>
+<body>
+<div class="wrap">
+<div class="side">
+  <h1>爱德思 AS 数学<br>公式手册</h1>
+  <div class="sub">Edexcel AS Mathematics 8MA0</div>
+  <div class="grp">本页目录</div>
+  <a href="#booklet">一、考场发放（公式册 AS 部分）</a><a href="#recall">二、必须背诵（公式册没有）</a><a href="#binom">三、二项分布累积表</a><a href="#calc">四、计算器（二项 / 正态）</a><a href="#normal">五、正态分布百分位点表</a>
+  <div class="grp" style="margin-top:16px">其他页</div>
+  <a class="item" href="index.html">← 总目录</a>
+  <a class="item" href="as_math_slides.html">课堂课件</a>
+  <a class="item" href="as_math_guide.html">讲解指南</a>
+  <a class="item" href="as_math_practice.html">练习题</a>
+</div>
+<div class="main">
+<div class="hero">
+<h1>公式手册 · Formula Book</h1>
+<div class="meta">
+按官方《Mathematical Formulae and Statistical Tables》与考纲 8MA0 Appendix 1 整理：
+<b>第一部分</b>是考场会发的公式册内容（不用背），<b>第二部分</b>是公式册里没有、必须自己记住的内容。
+</div>
+</div>
+
+<h2 id="booklet">一、考场发放（公式册 AS 部分）</h2>
+<p class="note">考试当天随卷发放，无需背诵，但必须会用——尤其是 $S_{xx}$ 与匀加速的五个公式。</p>
+<h3>Pure Mathematics · 纯数</h3><h4>Mensuration 求积</h4><table class="fx"><tbody><tr><td class="lb">球的表面积</td><td>$$4\pi r^{2}$$</td></tr><tr><td class="lb">圆锥侧面积</td><td>$$\pi r \times \text{slant height}（\pi r \times 母线长）$$</td></tr></tbody></table><h4>Binomial series 二项展开</h4><table class="fx"><tbody><tr><td class="lb">$$(a+b)^{n}$$</td><td>$$a^{n}+\binom{n}{1}a^{n-1}b+\binom{n}{2}a^{n-2}b^{2}+\dots+\binom{n}{r}a^{n-r}b^{r}+\dots+b^{n}\quad (n\in\mathbb{N})$$</td></tr><tr><td class="lb">$$\binom{n}{r}$$</td><td>$${}^{n}C_{r}=\frac{n!}{r!(n-r)!}$$</td></tr></tbody></table><h4>Logarithms and exponentials 对数与指数</h4><table class="fx"><tbody><tr><td class="lb">换底公式</td><td>$$\log_{a}x=\frac{\log_{b}x}{\log_{b}a}$$</td></tr><tr><td class="lb">指数改写</td><td>$$\mathrm{e}^{x\ln a}=a^{x}$$</td></tr></tbody></table><h4>Differentiation 微分</h4><table class="fx"><tbody><tr><td class="lb">第一原理</td><td>$$\mathrm{f}'(x)=\lim_{h\to 0}\frac{\mathrm{f}(x+h)-\mathrm{f}(x)}{h}$$</td></tr></tbody></table><h3>Statistics · 统计</h3><h4>Probability 概率</h4><table class="fx"><tbody><tr><td class="lb">对立事件</td><td>$$\mathrm{P}(A^{\prime})=1-\mathrm{P}(A)$$</td></tr></tbody></table><h4>Standard deviation 标准差</h4><table class="fx"><tbody><tr><td class="lb">标准差与方差</td><td>$$\text{标准差}=\sqrt{\text{方差}}$$</td></tr><tr><td class="lb">四分位距</td><td>$$\mathrm{IQR}=Q_{3}-Q_{1}$$</td></tr><tr><td class="lb">Sxx</td><td>$$S_{xx}=\sum(x_{i}-\bar{x})^{2}=\sum x_{i}^{2}-\frac{(\sum x_{i})^{2}}{n}$$</td></tr><tr><td class="lb">标准差</td><td>$$\sqrt{\frac{S_{xx}}{n}}=\sqrt{\frac{\sum x^{2}}{n}-\bar{x}^{2}}$$</td></tr></tbody></table><h4>Statistical tables 统计表</h4><table class="fx"><tbody><tr><td class="lb">考场提供</td><td>Binomial Cumulative Distribution Function（二项累积分布函数表）</td></tr><tr><td class="lb">考场提供</td><td>Random Numbers（随机数表）</td></tr></tbody></table><h3>Mechanics · 力学</h3><h4>Kinematics 运动学（匀加速直线运动）</h4><table class="fx"><tbody><tr><td class="lb">速度公式</td><td>v=u+at</td></tr><tr><td class="lb">位移公式</td><td>$$s=ut+\tfrac{1}{2}at^{2}$$</td></tr><tr><td class="lb">位移公式（末速）</td><td>$$s=vt-\tfrac{1}{2}at^{2}$$</td></tr><tr><td class="lb">速度—位移</td><td>$$v^{2}=u^{2}+2as$$</td></tr><tr><td class="lb">平均速度</td><td>$$s=\tfrac{1}{2}(u+v)t$$</td></tr></tbody></table>
+
+<h2 id="recall">二、必须背诵（公式册没有）</h2>
+<p class="note">考纲 Appendix 1 明确列出："这些公式学生应掌握，不会出现在公式册中。"
+求根公式、指数律、对数律、正弦/余弦定理都属于这一类。</p>
+<h3>Quadratic equations 二次方程</h3><table class="fx"><tbody><tr><td class="lb">求根公式</td><td>$$ax^{2}+bx+c=0\ \Rightarrow\ x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}$$</td></tr></tbody></table><h3>Laws of indices 指数律</h3><table class="fx"><tbody><tr><td class="lb">$$a^{x}a^{y}$$</td><td>$$a^{x+y}$$</td></tr><tr><td class="lb">$$a^{x}\div a^{y}$$</td><td>$$a^{x-y}$$</td></tr><tr><td class="lb">$$(a^{x})^{y}$$</td><td>$$a^{xy}$$</td></tr></tbody></table><h3>Laws of logarithms 对数律</h3><table class="fx"><tbody><tr><td class="lb">$$\log_{a}x+\log_{a}y$$</td><td>$$\log_{a}(xy)$$</td></tr><tr><td class="lb">$$\log_{a}x-\log_{a}y$$</td><td>$$\log_{a}\!\left(\frac{x}{y}\right)$$</td></tr><tr><td class="lb">$$k\log_{a}x$$</td><td>$$\log_{a}(x^{k})$$</td></tr><tr><td class="lb">对数定义</td><td>$$\log_{a}x=n\iff x=a^{n}\quad(a&gt;0,\ x&gt;0)$$</td></tr></tbody></table><h3>Coordinate geometry 坐标几何</h3><table class="fx"><tbody><tr><td class="lb">点斜式</td><td>$$y-y_{1}=m(x-x_{1})$$</td></tr><tr><td class="lb">垂直条件</td><td>$$m_{1}m_{2}=-1$$</td></tr><tr><td class="lb">两点距离</td><td>$$\sqrt{(x_{2}-x_{1})^{2}+(y_{2}-y_{1})^{2}}$$</td></tr><tr><td class="lb">圆</td><td>$$(x-a)^{2}+(y-b)^{2}=r^{2}$$</td></tr></tbody></table><h3>Trigonometry 三角</h3><table class="fx"><tbody><tr><td class="lb">正弦定理</td><td>$$\frac{a}{\sin A}=\frac{b}{\sin B}=\frac{c}{\sin C}$$</td></tr><tr><td class="lb">余弦定理</td><td>$$a^{2}=b^{2}+c^{2}-2bc\cos A$$</td></tr><tr><td class="lb">面积</td><td>$$\text{Area}=\tfrac{1}{2}ab\sin C$$</td></tr><tr><td class="lb">恒等式</td><td>$$\cos^{2}A+\sin^{2}A\equiv 1,\qquad \tan\theta\equiv\frac{\sin\theta}{\cos\theta}$$</td></tr></tbody></table><h3>Mensuration 求积</h3><table class="fx"><tbody><tr><td class="lb">圆周长 / 面积</td><td>$$C=2\pi r=\pi d,\qquad A=\pi r^{2}$$</td></tr><tr><td class="lb">勾股定理</td><td>$$c^{2}=a^{2}+b^{2}$$</td></tr><tr><td class="lb">梯形面积</td><td>$$\tfrac{1}{2}(a+b)h$$</td></tr><tr><td class="lb">棱柱体积</td><td>$$\text{截面积}\times \text{长度}$$</td></tr></tbody></table><h3>Calculus 微积分</h3><table class="fx"><tbody><tr><td class="lb">求导</td><td>$$\frac{\mathrm{d}}{\mathrm{d}x}(x^{n})=nx^{n-1},\qquad \frac{\mathrm{d}}{\mathrm{d}x}(\mathrm{e}^{kx})=k\mathrm{e}^{kx}$$</td></tr><tr><td class="lb">积分</td><td>$$\int x^{n}\,\mathrm{d}x=\frac{x^{n+1}}{n+1}+c\ (n\neq-1),\qquad \int \mathrm{e}^{kx}\,\mathrm{d}x=\frac{1}{k}\mathrm{e}^{kx}+c$$</td></tr><tr><td class="lb">和差规则</td><td>$$[\mathrm{f}(x)\pm\mathrm{g}(x)]'=\mathrm{f}'(x)\pm\mathrm{g}'(x)$$</td></tr><tr><td class="lb">曲线下面积</td><td>$$\text{Area}=\int_{a}^{b}y\,\mathrm{d}x\ (y\geq 0)$$</td></tr></tbody></table><h3>Vectors 向量</h3><table class="fx"><tbody><tr><td class="lb">模</td><td>$$|x\mathbf{i}+y\mathbf{j}+z\mathbf{k}|=\sqrt{x^{2}+y^{2}+z^{2}}（二维时去掉 z 项）$$</td></tr><tr><td class="lb">分量与模</td><td>$$\begin{pmatrix}r\cos\theta\\ r\sin\theta\end{pmatrix}\ \leftrightarrow\ |\mathbf{a}|=r$$</td></tr></tbody></table><h3>Statistics 统计</h3><table class="fx"><tbody><tr><td class="lb">均值</td><td>$$\bar{x}=\frac{\sum x}{n}=\frac{\sum fx}{\sum f}$$</td></tr></tbody></table><h3>Mechanics 力学</h3><table class="fx"><tbody><tr><td class="lb">重量</td><td>W=mg</td></tr><tr><td class="lb">摩擦</td><td>$$F\leq \mu R$$</td></tr><tr><td class="lb">牛顿第二定律</td><td>F=ma</td></tr><tr><td class="lb">变加速运动</td><td>$$v=\frac{\mathrm{d}r}{\mathrm{d}t},\quad a=\frac{\mathrm{d}v}{\mathrm{d}t}=\frac{\mathrm{d}^{2}r}{\mathrm{d}t^{2}},\quad r=\int v\,\mathrm{d}t,\quad v=\int a\,\mathrm{d}t$$</td></tr></tbody></table>
+
+<h2 id="binom">三、二项分布累积表</h2>
+<p class="note">表内为 $\mathrm{P}(X\le r)$，其中 $X\sim\mathrm{B}(n,p)$。由程序生成（Python math.comb），
+与官方表一致；考场上直接使用官方发放的表。</p>
+<h4>n = 5</h4><table class="bt"><thead><tr><th class="rk">r \ p</th><th>p=0.05</th><th>p=0.10</th><th>p=0.15</th><th>p=0.20</th><th>p=0.25</th><th>p=0.30</th><th>p=0.35</th><th>p=0.40</th><th>p=0.45</th><th>p=0.50</th></tr></thead><tbody><tr><th class="rk">0</th><td>0.7738</td><td>0.5905</td><td>0.4437</td><td>0.3277</td><td>0.2373</td><td>0.1681</td><td>0.1160</td><td>0.0778</td><td>0.0503</td><td>0.0312</td></tr><tr><th class="rk">1</th><td>0.9774</td><td>0.9185</td><td>0.8352</td><td>0.7373</td><td>0.6328</td><td>0.5282</td><td>0.4284</td><td>0.3370</td><td>0.2562</td><td>0.1875</td></tr><tr><th class="rk">2</th><td>0.9988</td><td>0.9914</td><td>0.9734</td><td>0.9421</td><td>0.8965</td><td>0.8369</td><td>0.7648</td><td>0.6826</td><td>0.5931</td><td>0.5000</td></tr><tr><th class="rk">3</th><td>1.0000</td><td>0.9995</td><td>0.9978</td><td>0.9933</td><td>0.9844</td><td>0.9692</td><td>0.9460</td><td>0.9130</td><td>0.8688</td><td>0.8125</td></tr><tr><th class="rk">4</th><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9997</td><td>0.9990</td><td>0.9976</td><td>0.9947</td><td>0.9898</td><td>0.9815</td><td>0.9688</td></tr><tr><th class="rk">5</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr></tbody></table><h4>n = 10</h4><table class="bt"><thead><tr><th class="rk">r \ p</th><th>p=0.05</th><th>p=0.10</th><th>p=0.15</th><th>p=0.20</th><th>p=0.25</th><th>p=0.30</th><th>p=0.35</th><th>p=0.40</th><th>p=0.45</th><th>p=0.50</th></tr></thead><tbody><tr><th class="rk">0</th><td>0.5987</td><td>0.3487</td><td>0.1969</td><td>0.1074</td><td>0.0563</td><td>0.0282</td><td>0.0135</td><td>0.0060</td><td>0.0025</td><td>0.0010</td></tr><tr><th class="rk">1</th><td>0.9139</td><td>0.7361</td><td>0.5443</td><td>0.3758</td><td>0.2440</td><td>0.1493</td><td>0.0860</td><td>0.0464</td><td>0.0233</td><td>0.0107</td></tr><tr><th class="rk">2</th><td>0.9885</td><td>0.9298</td><td>0.8202</td><td>0.6778</td><td>0.5256</td><td>0.3828</td><td>0.2616</td><td>0.1673</td><td>0.0996</td><td>0.0547</td></tr><tr><th class="rk">3</th><td>0.9990</td><td>0.9872</td><td>0.9500</td><td>0.8791</td><td>0.7759</td><td>0.6496</td><td>0.5138</td><td>0.3823</td><td>0.2660</td><td>0.1719</td></tr><tr><th class="rk">4</th><td>0.9999</td><td>0.9984</td><td>0.9901</td><td>0.9672</td><td>0.9219</td><td>0.8497</td><td>0.7515</td><td>0.6331</td><td>0.5044</td><td>0.3770</td></tr><tr><th class="rk">5</th><td>1.0000</td><td>0.9999</td><td>0.9986</td><td>0.9936</td><td>0.9803</td><td>0.9527</td><td>0.9051</td><td>0.8338</td><td>0.7384</td><td>0.6230</td></tr><tr><th class="rk">6</th><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9991</td><td>0.9965</td><td>0.9894</td><td>0.9740</td><td>0.9452</td><td>0.8980</td><td>0.8281</td></tr><tr><th class="rk">7</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9996</td><td>0.9984</td><td>0.9952</td><td>0.9877</td><td>0.9726</td><td>0.9453</td></tr><tr><th class="rk">8</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9995</td><td>0.9983</td><td>0.9955</td><td>0.9893</td></tr><tr><th class="rk">9</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9997</td><td>0.9990</td></tr><tr><th class="rk">10</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr></tbody></table><h4>n = 15</h4><table class="bt"><thead><tr><th class="rk">r \ p</th><th>p=0.05</th><th>p=0.10</th><th>p=0.15</th><th>p=0.20</th><th>p=0.25</th><th>p=0.30</th><th>p=0.35</th><th>p=0.40</th><th>p=0.45</th><th>p=0.50</th></tr></thead><tbody><tr><th class="rk">0</th><td>0.4633</td><td>0.2059</td><td>0.0874</td><td>0.0352</td><td>0.0134</td><td>0.0047</td><td>0.0016</td><td>0.0005</td><td>0.0001</td><td>0.0000</td></tr><tr><th class="rk">1</th><td>0.8290</td><td>0.5490</td><td>0.3186</td><td>0.1671</td><td>0.0802</td><td>0.0353</td><td>0.0142</td><td>0.0052</td><td>0.0017</td><td>0.0005</td></tr><tr><th class="rk">2</th><td>0.9638</td><td>0.8159</td><td>0.6042</td><td>0.3980</td><td>0.2361</td><td>0.1268</td><td>0.0617</td><td>0.0271</td><td>0.0107</td><td>0.0037</td></tr><tr><th class="rk">3</th><td>0.9945</td><td>0.9444</td><td>0.8227</td><td>0.6482</td><td>0.4613</td><td>0.2969</td><td>0.1727</td><td>0.0905</td><td>0.0424</td><td>0.0176</td></tr><tr><th class="rk">4</th><td>0.9994</td><td>0.9873</td><td>0.9383</td><td>0.8358</td><td>0.6865</td><td>0.5155</td><td>0.3519</td><td>0.2173</td><td>0.1204</td><td>0.0592</td></tr><tr><th class="rk">5</th><td>0.9999</td><td>0.9978</td><td>0.9832</td><td>0.9389</td><td>0.8516</td><td>0.7216</td><td>0.5643</td><td>0.4032</td><td>0.2608</td><td>0.1509</td></tr><tr><th class="rk">6</th><td>1.0000</td><td>0.9997</td><td>0.9964</td><td>0.9819</td><td>0.9434</td><td>0.8689</td><td>0.7548</td><td>0.6098</td><td>0.4522</td><td>0.3036</td></tr><tr><th class="rk">7</th><td>1.0000</td><td>1.0000</td><td>0.9994</td><td>0.9958</td><td>0.9827</td><td>0.9500</td><td>0.8868</td><td>0.7869</td><td>0.6535</td><td>0.5000</td></tr><tr><th class="rk">8</th><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9992</td><td>0.9958</td><td>0.9848</td><td>0.9578</td><td>0.9050</td><td>0.8182</td><td>0.6964</td></tr><tr><th class="rk">9</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9992</td><td>0.9963</td><td>0.9876</td><td>0.9662</td><td>0.9231</td><td>0.8491</td></tr><tr><th class="rk">10</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9993</td><td>0.9972</td><td>0.9907</td><td>0.9745</td><td>0.9408</td></tr><tr><th class="rk">11</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9995</td><td>0.9981</td><td>0.9937</td><td>0.9824</td></tr><tr><th class="rk">12</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9997</td><td>0.9989</td><td>0.9963</td></tr><tr><th class="rk">13</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9995</td></tr><tr><th class="rk">14</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr><tr><th class="rk">15</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr></tbody></table><h4>n = 20</h4><table class="bt"><thead><tr><th class="rk">r \ p</th><th>p=0.05</th><th>p=0.10</th><th>p=0.15</th><th>p=0.20</th><th>p=0.25</th><th>p=0.30</th><th>p=0.35</th><th>p=0.40</th><th>p=0.45</th><th>p=0.50</th></tr></thead><tbody><tr><th class="rk">0</th><td>0.3585</td><td>0.1216</td><td>0.0388</td><td>0.0115</td><td>0.0032</td><td>0.0008</td><td>0.0002</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr><tr><th class="rk">1</th><td>0.7358</td><td>0.3917</td><td>0.1756</td><td>0.0692</td><td>0.0243</td><td>0.0076</td><td>0.0021</td><td>0.0005</td><td>0.0001</td><td>0.0000</td></tr><tr><th class="rk">2</th><td>0.9245</td><td>0.6769</td><td>0.4049</td><td>0.2061</td><td>0.0913</td><td>0.0355</td><td>0.0121</td><td>0.0036</td><td>0.0009</td><td>0.0002</td></tr><tr><th class="rk">3</th><td>0.9841</td><td>0.8670</td><td>0.6477</td><td>0.4114</td><td>0.2252</td><td>0.1071</td><td>0.0444</td><td>0.0160</td><td>0.0049</td><td>0.0013</td></tr><tr><th class="rk">4</th><td>0.9974</td><td>0.9568</td><td>0.8298</td><td>0.6296</td><td>0.4148</td><td>0.2375</td><td>0.1182</td><td>0.0510</td><td>0.0189</td><td>0.0059</td></tr><tr><th class="rk">5</th><td>0.9997</td><td>0.9887</td><td>0.9327</td><td>0.8042</td><td>0.6172</td><td>0.4164</td><td>0.2454</td><td>0.1256</td><td>0.0553</td><td>0.0207</td></tr><tr><th class="rk">6</th><td>1.0000</td><td>0.9976</td><td>0.9781</td><td>0.9133</td><td>0.7858</td><td>0.6080</td><td>0.4166</td><td>0.2500</td><td>0.1299</td><td>0.0577</td></tr><tr><th class="rk">7</th><td>1.0000</td><td>0.9996</td><td>0.9941</td><td>0.9679</td><td>0.8982</td><td>0.7723</td><td>0.6010</td><td>0.4159</td><td>0.2520</td><td>0.1316</td></tr><tr><th class="rk">8</th><td>1.0000</td><td>0.9999</td><td>0.9987</td><td>0.9900</td><td>0.9591</td><td>0.8867</td><td>0.7624</td><td>0.5956</td><td>0.4143</td><td>0.2517</td></tr><tr><th class="rk">9</th><td>1.0000</td><td>1.0000</td><td>0.9998</td><td>0.9974</td><td>0.9861</td><td>0.9520</td><td>0.8782</td><td>0.7553</td><td>0.5914</td><td>0.4119</td></tr><tr><th class="rk">10</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9994</td><td>0.9961</td><td>0.9829</td><td>0.9468</td><td>0.8725</td><td>0.7507</td><td>0.5881</td></tr><tr><th class="rk">11</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9999</td><td>0.9991</td><td>0.9949</td><td>0.9804</td><td>0.9435</td><td>0.8692</td><td>0.7483</td></tr><tr><th class="rk">12</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9998</td><td>0.9987</td><td>0.9940</td><td>0.9790</td><td>0.9420</td><td>0.8684</td></tr><tr><th class="rk">13</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9997</td><td>0.9985</td><td>0.9935</td><td>0.9786</td><td>0.9423</td></tr><tr><th class="rk">14</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9997</td><td>0.9984</td><td>0.9936</td><td>0.9793</td></tr><tr><th class="rk">15</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9997</td><td>0.9985</td><td>0.9941</td></tr><tr><th class="rk">16</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9997</td><td>0.9987</td></tr><tr><th class="rk">17</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>0.9998</td></tr><tr><th class="rk">18</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr><tr><th class="rk">19</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr><tr><th class="rk">20</th><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>1.0000</td></tr></tbody></table>
+
+<h2 id="calc">四、计算器（二项 / 正态）</h2>
+<div class="calc">
+<h4>二项分布 $X\sim\mathrm{B}(n,p)$</h4>
+<div>
+<label>n =</label><input id="bn" value="12" type="number">
+<label>p =</label><input id="bp" value="0.35" type="number" step="0.01">
+<label>r =</label><input id="br" value="4" type="number">
+<button class="btn" onclick="bcalc()">计算</button>
+</div>
+<div class="res" id="bres">—</div>
+</div>
+<div class="calc">
+<h4>正态分布 $Z\sim\mathrm{N}(0,1)$ <span class="badge">A-Level 内容</span></h4>
+<div>
+<label>z =</label><input id="nz" value="1.96" type="number" step="0.01">
+<button class="btn" onclick="ncalc()">计算</button>
+</div>
+<div class="res" id="nres">—</div>
+</div>
+
+<h2 id="normal">五、正态分布百分位点表</h2>
+<p class="note">表中为满足 $\mathrm{P}(Z&gt;z)=p$ 的 $z$ 值。<span class="badge">A-Level 内容</span></p>
+<table><thead><tr><th>p</th><th>0.5000</th><th>0.4000</th><th>0.3000</th><th>0.2000</th><th>0.1000</th><th>0.0500</th><th>0.0250</th><th>0.0100</th><th>0.0050</th><th>0.0010</th><th>0.0005</th></tr></thead>
+<tbody><tr><th>z</th><td>0.0000</td><td>0.2533</td><td>0.5244</td><td>0.8416</td><td>1.2816</td><td>1.6449</td><td>1.9600</td><td>2.3263</td><td>2.5758</td><td>3.0902</td><td>3.2905</td></tr></tbody></table>
+
+<div class="footer">
+公式正文来源：Pearson《Mathematical Formulae and Statistical Tables》（2017）与 Pearson Edexcel AS Mathematics (8MA0) Specification Appendix 1。
+二项累积表与计算器由本页程序生成，仅供核对。
+</div>
+</div></div>
+<script>
+function comb(n,k){if(k<0||k>n)return 0;let r=1;for(let i=1;i<=k;i++)r=r*(n-k+i)/i;return r;}
+function bcdf(r,n,p){let s=0;for(let k=0;k<=r;k++)s+=comb(n,k)*Math.pow(p,k)*Math.pow(1-p,n-k);return s;}
+function bcalc(){
+  const n=parseInt(document.getElementById('bn').value);
+  const p=parseFloat(document.getElementById('bp').value);
+  const r=parseInt(document.getElementById('br').value);
+  const le=bcdf(r,n,p), eq=comb(n,r)*Math.pow(p,r)*Math.pow(1-p,n-r);
+  document.getElementById('bres').innerHTML=
+    'P(X ≤ '+r+') = <b>'+le.toFixed(4)+'</b> &nbsp;|&nbsp; P(X = '+r+') = <b>'+eq.toFixed(4)+
+    '</b> &nbsp;|&nbsp; P(X ≥ '+r+') = <b>'+(1-le+eq).toFixed(4)+'</b> &nbsp;|&nbsp; P(X > '+r+') = <b>'+(1-le).toFixed(4)+'</b>';
+}
+function ncdf(z){
+  // Abramowitz-Stegun 7.1.26 近似
+  const t=1/(1+0.2316419*Math.abs(z));
+  const d=0.3989423*Math.exp(-z*z/2);
+  const p=d*t*(0.3193815+t*(-0.3565638+t*(1.781478+t*(-1.821256+t*1.330274))));
+  return z>0?1-p:p;
+}
+function ncalc(){
+  const z=parseFloat(document.getElementById('nz').value);
+  const F=ncdf(z);
+  document.getElementById('nres').innerHTML=
+    'P(Z ≤ '+z+') = <b>'+F.toFixed(4)+'</b> &nbsp;|&nbsp; P(Z > '+z+') = <b>'+(1-F).toFixed(4)+'</b>';
+}
+</script>
+</body></html>

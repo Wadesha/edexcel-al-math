@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>爱德思 AS 数学 · 练习题</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$'], ['\(','\)']], displayMath: [['$$','$$'], ['\[','\]']] }
+};
+</script>
+<script src="mathjax/tex-mml-svg.js" async></script>
+
+<link rel="stylesheet" href="_theme.css">
+<link rel="stylesheet" href="_theme_slides.css">
+<style>
+/* 以下仅为练习题页独有布局；菜单/卡片网格/进度条/导航均来自 teaching-kit 工具包 */
+.grid{margin-top:8px}
+.qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px 28px;min-height:230px}
+.qhead{color:var(--dim);font-size:13px;margin-bottom:8px}
+.qtext{font-size:18px;line-height:1.85}
+.abox{margin-top:18px;border-left:3px solid var(--acc2);padding:12px 16px;display:none}
+.abox.on{display:block}
+.kbd{color:var(--dim);font-size:12.5px;margin-top:10px}
+.kbd b{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+</style></head>
+<body>
+<div class="wrap">
+<div class="side">
+  <h1>爱德思 AS 数学<br>练习题</h1>
+  <div class="sub">共 17 个专题 · 99 题</div>
+  <div class="grp">操作</div>
+  <a class="item" href="#" onclick="backMenu();return false;">← 回到专题菜单</a>
+  <div class="grp" style="margin-top:16px">其他页</div>
+  <a class="item" href="index.html">← 总目录</a>
+  <a class="item" href="as_math_slides.html">课堂课件</a>
+  <a class="item" href="as_math_guide.html">讲解指南</a>
+  <a class="item" href="as_math_formula.html">公式手册</a>
+</div>
+<div class="main">
+
+<div class="menu on" id="menu">
+  <div class="hero">
+  <h1>练习题 · Practice</h1>
+  <div class="meta">按专题选一组题，进入后逐题播放。默认隐藏答案，
+  按<b>空格</b>显示/隐藏，<b>← →</b> 翻题，<b>Esc</b> 返回本菜单。</div>
+  </div>
+  <div id="groups"></div>
+</div>
+
+<div class="stage" id="stage">
+  <div class="toolbar">
+    <button class="btn" onclick="backMenu()">← 菜单</button>
+    <button class="btn" onclick="toggleAns()">显示/隐藏答案</button>
+    <button class="btn" onclick="prev()">上一题</button>
+    <button class="btn" onclick="next_()">下一题</button>
+    <span class="btn" id="pos">—</span>
+  </div>
+  <div class="bar"><i id="prog"></i></div>
+  <div class="qbox">
+    <div class="qhead" id="qhead">—</div>
+    <div class="qtext" id="qtext">—</div>
+    <div class="abox" id="abox"><b style="color:var(--acc2)">答案</b>
+      <div id="atext" style="margin-top:6px"></div></div>
+  </div>
+  <div class="nav">
+    <button class="btn" onclick="prev()">← 上一题</button>
+    <button class="btn" onclick="toggleAns()">空格：答案</button>
+    <button class="btn" onclick="next_()">下一题 →</button>
+  </div>
+  <div class="kbd">快捷键：<b>←</b> 上一题 · <b>→</b> 下一题 · <b>空格</b> 答案 · <b>Esc</b> 返回菜单</div>
+</div>
+
+</div></div>
+<script>
+const DATA = {"decks": [{"key": "P1_证明", "title": "P1 · 证明 Proof", "group": "P", "qs": [{"n": 1, "q": "<p>证明：对任意整数 $n$，$n^3-n$ 能被 $3$ 整除。</p>", "a": "<p>$n^3-n=n(n-1)(n+1)$，是三个连续整数之积。任意三个连续整数中必有一个是 $3$ 的倍数，故乘积能被 $3$ 整除。$\\square$</p>"}, {"n": 2, "q": "<p>证明：两个奇数的平方和是偶数，但不是 $4$ 的倍数。</p>", "a": "<p>设两个奇数为 $2a+1,\\ 2b+1$。$(2a+1)^2+(2b+1)^2=4a^2+4a+1+4b^2+4b+1=4(a^2+a+b^2+b)+2$。该式为 $4k+2$ 的形式，故为偶数且不是 $4$ 的倍数。$\\square$</p>"}, {"n": 3, "q": "<p>命题：\"对任意整数 $n$，$n^2+n+1$ 是奇数。\" 用穷举以外的方法证明它。</p>", "a": "<p>$n^2+n=n(n+1)$ 是两个连续整数之积，必为偶数，设 $n^2+n=2k$。则 $n^2+n+1=2k+1$，为奇数。$\\square$</p>"}, {"n": 4, "q": "<p>给出一个反例推翻命题：\"对任意实数 $x$ 与 $y$，若 $x^2=y^2$ 则 $x=y$。\"</p>", "a": "<p>取 $x=1,\\ y=-1$。$x^2=y^2=1$，但 $x\\neq y$。命题为假。</p>"}, {"n": 5, "q": "<p>已知 $m$ 与 $n$ 为正整数，且 $m^2-n^2=15$。用演绎法求 $m$ 与 $n$。</p>", "a": "<p>$(m-n)(m+n)=15$。$m-n$ 与 $m+n$ 均为正整数且 $m-n&lt;m+n$，因数对只有 $(1,15)$ 与 $(3,5)$。情形一：$m-n=1,\\ m+n=15$，得 $m=8,\\ n=7$。情形二：$m-n=3,\\ m+n=5$，得 $m=4,\\ n=1$。两组解：$(m,n)=(8,7)$ 或 $(4,1)$。</p>"}, {"n": 6, "q": "<p>说明下列命题中哪一个是恒等式、哪一个是方程：$2(x+3)\\equiv 2x+6$；$2(x+3)=10$。</p>", "a": "<p>第一式对一切 $x$ 成立，是恒等式（identity），用 $\\equiv$ 连接；第二式只在 $x=2$ 时成立，是方程（equation），需要求解。</p>"}]}, {"key": "P2_代数与函数", "title": "P2 · 代数与函数 Algebra and functions", "group": "P", "qs": [{"n": 1, "q": "<p>化简 $\\dfrac{27^{x}\\cdot 9^{2x}}{3^{5x-1}}$。</p>", "a": "<p>统一底数 $3$：$27^x=3^{3x}$，$9^{2x}=3^{4x}$。原式 $=\\dfrac{3^{3x+4x}}{3^{5x-1}}=3^{7x-(5x-1)}=3^{2x+1}$。</p>"}, {"n": 2, "q": "<p>把 $\\dfrac{4+\\sqrt5}{2-\\sqrt5}$ 写成 $a+b\\sqrt5$ 的形式。</p>", "a": "<p>乘共轭：$\\dfrac{(4+\\sqrt5)(2+\\sqrt5)}{(2-\\sqrt5)(2+\\sqrt5)}=\\dfrac{8+4\\sqrt5+2\\sqrt5+5}{4-5}=\\dfrac{13+6\\sqrt5}{-1}=-13-6\\sqrt5$。</p>"}, {"n": 3, "q": "<p>已知 $\\mathrm{f}(x)=x^2+(k-3)x+9$ 有两个相等实根，求 $k$ 的可能值。</p>", "a": "<p>$\\Delta=(k-3)^2-36=0$，$(k-3)^2=36$，$k-3=\\pm 6$，故 $k=9$ 或 $k=-3$。</p>"}, {"n": 4, "q": "<p>解不等式 $2x^2+5x-3&lt;0$。</p>", "a": "<p>分解：$(2x-1)(x+3)&lt;0$，临界值 $x=-3$ 与 $x=\\dfrac12$。开口向上，取两根之间：$-3&lt;x&lt;\\dfrac12$。</p>"}, {"n": 5, "q": "<p>已知 $x-2$ 是 $\\mathrm{f}(x)=x^3+ax^2-7x+2$ 的因式，求 $a$ 并把 $\\mathrm{f}(x)$ 完全分解。</p>", "a": "<p>$\\mathrm{f}(2)=8+4a-14+2=4a-4=0$，得 $a=1$。$\\mathrm{f}(x)=x^3+x^2-7x+2=(x-2)(x^2+3x-1)$。二次因式 $\\Delta=9+4=13$，根为 $\\dfrac{-3\\pm\\sqrt{13}}{2}$，故完全分解为 $(x-2)\\left(x-\\dfrac{-3+\\sqrt{13}}{2}\\right)\\left(x-\\dfrac{-3-\\sqrt{13}}{2}\\right)$（实数范围内）。</p>"}, {"n": 6, "q": "<p>把 $y=x^2$ 的图像先向左平移 $3$ 单位、再向下平移 $2$ 单位，写出新曲线的方程。</p>", "a": "<p>左移 $3$：$y=(x+3)^2$；下移 $2$：$y=(x+3)^2-2$。展开为 $y=x^2+6x+7$。</p>"}]}, {"key": "P3_坐标几何", "title": "P3 · 坐标几何 Coordinate geometry in the $(x,y)$ plane", "group": "P", "qs": [{"n": 1, "q": "<p>求过点 $(2,-3)$ 且与直线 $4x+2y-7=0$ 平行的直线方程。</p>", "a": "<p>已知直线斜率 $m=-2$。平行则斜率同为 $-2$。$y+3=-2(x-2)$，即 $2x+y-1=0$。</p>"}, {"n": 2, "q": "<p>求以 $A(-1,2)$、$B(3,6)$ 为直径两端点的圆的方程。</p>", "a": "<p>圆心为中点 $(1,4)$。直径 $|AB|=\\sqrt{4^2+4^2}=4\\sqrt2$，半径 $2\\sqrt2$，$r^2=8$。圆：$(x-1)^2+(y-4)^2=8$。</p>"}, {"n": 3, "q": "<p>判断点 $(3,-1)$ 在圆 $x^2+y^2-6x+4y-3=0$ 的内部、圆上还是外部。</p>", "a": "<p>配方：$(x-3)^2+(y+2)^2=16$，圆心 $(3,-2)$，半径 $4$。点 $(3,-1)$ 到圆心距离为 $1&lt;4$，故在圆内。</p>"}, {"n": 4, "q": "<p>直线 $y=kx+5$ 与圆 $x^2+y^2=25$ 相切，求 $k$ 的可能值。</p>", "a": "<p>圆心到直线距离等于半径 $5$。直线写成 $kx-y+5=0$，距离 $=\\dfrac{|5|}{\\sqrt{k^2+1}}=5$，即 $\\sqrt{k^2+1}=1$，$k=0$。（几何上也显然：$y=5$ 是圆顶部水平切线。）</p>"}, {"n": 5, "q": "<p>求圆 $x^2+y^2-2x-4y-20=0$ 的圆心、半径，并判断直线 $3x+4y=30$ 是否与该圆相交。</p>", "a": "<p>配方：$(x-1)^2+(y-2)^2=25$，圆心 $(1,2)$，半径 $5$。圆心到直线距离 $=\\dfrac{|3+8-30|}{5}=\\dfrac{19}{5}=3.8&lt;5$，故相交（两个交点）。</p>"}]}, {"key": "P4_数列与二项展开", "title": "P4 · 数列与级数 Sequences and series", "group": "P", "qs": [{"n": 1, "q": "<p>求 $(1+2x)^5$ 中 $x^2$ 项的系数。</p>", "a": "<p>通项 $\\binom5r (2x)^r$，$r=2$：$\\binom52\\cdot 4=10\\times4=40$。</p>"}, {"n": 2, "q": "<p>展开 $(2-x)^3$。</p>", "a": "<p>$8+\\binom31 4(-x)+\\binom32 2(-x)^2+(-x)^3=8-12x+6x^2-x^3$。</p>"}, {"n": 3, "q": "<p>求 $\\left(x+\\dfrac{2}{x^2}\\right)^{6}$ 中 $x^0$ 项（常数项）的值。</p>", "a": "<p>通项 $\\binom6r x^{6-r}\\left(\\frac{2}{x^2}\\right)^r=\\binom6r 2^r x^{6-3r}$。令 $6-3r=0$ 得 $r=2$，常数项 $=\\binom62\\cdot 4=60$。</p>"}, {"n": 4, "q": "<p>计算 $\\displaystyle\\binom{10}{3}$ 与 $\\displaystyle\\binom{10}{7}$，并说明二者关系。</p>", "a": "<p>$\\binom{10}{3}=\\frac{10\\cdot9\\cdot8}{6}=120$；$\\binom{10}{7}=\\binom{10}{3}=120$（对称性 $\\binom nr=\\binom n{n-r}$）。</p>"}, {"n": 5, "q": "<p>已知 $(1+kx)^4=1+12x+ax^2+\\cdots$，求 $k$ 与 $a$。</p>", "a": "<p>$x$ 项系数 $\\binom41 k=4k=12$，得 $k=3$。$x^2$ 项系数 $a=\\binom42 k^2=6\\times 9=54$。</p>"}, {"n": 6, "q": "<p>用前三项估算 $(1.02)^8$，保留 $4$ 位小数。</p>", "a": "<p>$(1+0.02)^8=1+8(0.02)+\\binom82(0.02)^2+\\cdots=1+0.16+28(0.0004)=1+0.16+0.0112=1.1712$（精确值 $1.1717$，三项估算已精确到 $4$ 位小数中的前 $3$ 位）。</p>"}]}, {"key": "P5_三角", "title": "P5 · 三角 Trigonometry", "group": "P", "qs": [{"n": 1, "q": "<p>三角形中 $a=6$，$B=45^\\circ$，$C=75^\\circ$，用正弦定理求 $b$（保留 $3$ 位有效数字）。</p>", "a": "<p>$A=180^\\circ-45^\\circ-75^\\circ=60^\\circ$。$\\dfrac{b}{\\sin45^\\circ}=\\dfrac{6}{\\sin60^\\circ}$，$b=\\dfrac{6\\sin45^\\circ}{\\sin 60^\\circ}=\\dfrac{6(0.7071)}{0.8660}=4.90$。</p>"}, {"n": 2, "q": "<p>三角形三边为 $5,6,7$，求最大角的余弦值。</p>", "a": "<p>最大角对边 $7$：$\\cos C=\\dfrac{5^2+6^2-7^2}{2(5)(6)}=\\dfrac{25+36-49}{60}=\\dfrac{12}{60}=0.2$。</p>"}, {"n": 3, "q": "<p>化简 $\\dfrac{\\sin\\theta}{1+\\cos\\theta}+\\dfrac{1+\\cos\\theta}{\\sin\\theta}$。</p>", "a": "<p>通分：$\\dfrac{\\sin^2\\theta+(1+\\cos\\theta)^2}{\\sin\\theta(1+\\cos\\theta)}=\\dfrac{\\sin^2\\theta+1+2\\cos\\theta+\\cos^2\\theta}{\\sin\\theta(1+\\cos\\theta)}=\\dfrac{2+2\\cos\\theta}{\\sin\\theta(1+\\cos\\theta)}=\\dfrac{2(1+\\cos\\theta)}{\\sin\\theta(1+\\cos\\theta)}=\\dfrac{2}{\\sin\\theta}$。</p>"}, {"n": 4, "q": "<p>解 $\\tan x=-\\sqrt3$，$-180^\\circ\\le x\\le 180^\\circ$。</p>", "a": "<p>$\\tan^{-1}(\\sqrt3)=60^\\circ$。正切为负在第二、四象限：$x=-60^\\circ,\\ 120^\\circ$。</p>"}, {"n": 5, "q": "<p>解 $3\\sin^2x=\\cos^2x$，$0\\le x\\le 2\\pi$（弧度）。</p>", "a": "<p>$3\\sin^2x=1-\\sin^2x\\ \\Rightarrow\\ 4\\sin^2x=1\\ \\Rightarrow\\ \\sin x=\\pm\\dfrac12$。$x=\\dfrac{\\pi}{6},\\ \\dfrac{5\\pi}{6},\\ \\dfrac{7\\pi}{6},\\ \\dfrac{11\\pi}{6}$。</p>"}, {"n": 6, "q": "<p>解 $\\cos\\left(2x+\\dfrac{\\pi}{3}\\right)=\\dfrac12$，$0\\le x\\le \\pi$。</p>", "a": "<p>令 $\\theta=2x+\\dfrac{\\pi}{3}$，则 $\\dfrac{\\pi}{3}\\le\\theta\\le\\dfrac{7\\pi}{3}$。$\\cos\\theta=\\dfrac12$ 得 $\\theta=\\dfrac{\\pi}{3},\\ \\dfrac{5\\pi}{3},\\ \\dfrac{7\\pi}{3}$。故 $2x=0,\\ \\dfrac{4\\pi}{3},\\ 2\\pi$，即 $x=0,\\ \\dfrac{2\\pi}{3},\\ \\pi$。</p>"}]}, {"key": "P6_指数与对数", "title": "P6 · 指数与对数 Exponentials and logarithms", "group": "P", "qs": [{"n": 1, "q": "<p>写出 $\\log_3 27$ 与 $\\ln(\\mathrm{e}^5)$ 的值。</p>", "a": "<p>$\\log_3 27=3$（因为 $3^3=27$）；$\\ln(\\mathrm{e}^5)=5$。</p>"}, {"n": 2, "q": "<p>把 $2\\log_5 x+\\log_5 3-\\log_5(x+1)$ 写成单个对数。</p>", "a": "<p>$\\log_5(x^2)+\\log_5 3-\\log_5(x+1)=\\log_5\\!\\left(\\dfrac{3x^2}{x+1}\\right)$。</p>"}, {"n": 3, "q": "<p>解 $2^{x}=3^{x-1}$，精确到 $3$ 位有效数字。</p>", "a": "<p>取对数：$x\\ln2=(x-1)\\ln3$。$x(\\ln3-\\ln2)=\\ln3$，$x=\\dfrac{\\ln3}{\\ln3-\\ln2}=\\dfrac{1.0986}{0.4055}=2.71$。</p>"}, {"n": 4, "q": "<p>某细菌数量 $N=500\\mathrm{e}^{0.3t}$（$t$ 以小时计）。求数量达到 $5000$ 所需时间。</p>", "a": "<p>$500\\mathrm{e}^{0.3t}=5000\\ \\Rightarrow\\ \\mathrm{e}^{0.3t}=10\\ \\Rightarrow\\ 0.3t=\\ln10=2.303\\ \\Rightarrow\\ t=7.68$ 小时。</p>"}, {"n": 5, "q": "<p>放射性样品质量 $M$ 满足 $M=M_0\\mathrm{e}^{-kt}$，半衰期为 $20$ 年，求 $k$。</p>", "a": "<p>$\\mathrm{e}^{-20k}=\\dfrac12\\ \\Rightarrow\\ -20k=\\ln\\dfrac12=-0.693\\ \\Rightarrow\\ k=0.0347\\ \\text{年}^{-1}$。</p>"}, {"n": 6, "q": "<p>数据被认为满足 $y=kb^x$。作 $\\ln y$ 对 $x$ 图得直线，斜率 $-0.08$，截距 $2.1$。求 $k$ 与 $b$。</p>", "a": "<p>$\\ln y=\\ln k+x\\ln b$，故 $\\ln b=-0.08\\Rightarrow b=\\mathrm{e}^{-0.08}=0.923$；$\\ln k=2.1\\Rightarrow k=\\mathrm{e}^{2.1}=8.17$。即 $y=8.17(0.923)^x$。</p>"}]}, {"key": "P7_微分", "title": "P7 · 微分 Differentiation", "group": "P", "qs": [{"n": 1, "q": "<p>求 $\\mathrm{f}(x)=4x^{3/2}-\\dfrac{5}{x}$ 的导数。</p>", "a": "<p>化为幂：$4x^{3/2}-5x^{-1}$。$\\mathrm{f}'(x)=6x^{1/2}+5x^{-2}=6\\sqrt x+\\dfrac{5}{x^2}$。</p>"}, {"n": 2, "q": "<p>用第一原理求 $\\mathrm{f}(x)=3x^2$ 的导数。</p>", "a": "<p>$\\mathrm{f}'(x)=\\lim_{h\\to0}\\dfrac{3(x+h)^2-3x^2}{h}=\\lim_{h\\to0}\\dfrac{6xh+3h^2}{h}=\\lim_{h\\to0}(6x+3h)=6x$。</p>"}, {"n": 3, "q": "<p>曲线 $y=x^2-4x+3$，求在 $x=3$ 处的切线方程。</p>", "a": "<p>$y(3)=9-12+3=0$，点 $(3,0)$；导数 $2x-4$，$x=3$ 时为 $2$。切线：$y=2(x-3)$，即 $y=2x-6$。</p>"}, {"n": 4, "q": "<p>求 $\\mathrm{f}(x)=x^3-3x^2-9x+4$ 的驻点及其性质。</p>", "a": "<p>$\\mathrm{f}'(x)=3x^2-6x-9=3(x-3)(x+1)$，驻点 $x=-1,\\ 3$。$\\mathrm{f}''(x)=6x-6$：$\\mathrm{f}''(-1)=-12&lt;0$，$(-1,9)$ 极大；$\\mathrm{f}''(3)=12&gt;0$，$(3,-23)$ 极小。</p>"}, {"n": 5, "q": "<p>一个矩形的周长为 $40$ cm，求面积最大时的边长与最大面积。</p>", "a": "<p>设一边 $x$，另一边 $20-x$，$A=x(20-x)=20x-x^2$，$\\dfrac{\\mathrm{d}A}{\\mathrm{d}x}=20-2x=0\\Rightarrow x=10$。$\\dfrac{\\mathrm{d}^2A}{\\mathrm{d}x^2}=-2&lt;0$，为最大。此时为正方形 $10\\times10$，最大面积 $100$ cm$^2$。</p>"}, {"n": 6, "q": "<p>$\\mathrm{f}(x)=x+\\dfrac{4}{x}\\ (x&gt;0)$，求最小值并说明它是最小而非最大。</p>", "a": "<p>$\\mathrm{f}'(x)=1-\\dfrac{4}{x^2}=0\\Rightarrow x=2$（$x&gt;0$）。$\\mathrm{f}(2)=2+2=4$。$\\mathrm{f}''(x)=\\dfrac{8}{x^3}&gt;0$（$x&gt;0$），故为最小值。最小值为 $4$。</p>"}]}, {"key": "P8_积分", "title": "P8 · 积分 Integration", "group": "P", "qs": [{"n": 1, "q": "<p>求 $\\displaystyle\\int\\left(6x^2+\\frac{1}{2\\sqrt x}\\right)\\mathrm{d}x$。</p>", "a": "<p>化为幂：$\\int\\left(6x^2+\\frac12 x^{-1/2}\\right)\\mathrm{d}x=2x^3+x^{1/2}+c=2x^3+\\sqrt x+c$。</p>"}, {"n": 2, "q": "<p>计算 $\\displaystyle\\int_0^2 (3x^2-2x)\\,\\mathrm{d}x$。</p>", "a": "<p>$\\left[x^3-x^2\\right]_0^2=(8-4)-0=4$。</p>"}, {"n": 3, "q": "<p>求 $\\displaystyle\\int_1^3 \\frac{2}{x^2}\\,\\mathrm{d}x$。</p>", "a": "<p>$\\left[-2x^{-1}\\right]_1^3=-\\dfrac23-(-2)=\\dfrac43$。</p>"}, {"n": 4, "q": "<p>求曲线 $y=x^2-4$ 与 $x$ 轴围成的面积。</p>", "a": "<p>交点 $x=\\pm2$，区间内 $y\\le0$。$\\int_{-2}^{2}(x^2-4)\\mathrm{d}x=\\left[\\dfrac{x^3}{3}-4x\\right]_{-2}^{2}=\\left(\\dfrac83-8\\right)-\\left(-\\dfrac83+8\\right)=-\\dfrac{32}{3}$。面积为 $\\dfrac{32}{3}$（取绝对值）。</p>"}, {"n": 5, "q": "<p>已知 $\\mathrm{f}'(x)=2x+1$，$\\mathrm{f}(0)=3$，求 $\\mathrm{f}(2)$。</p>", "a": "<p>$\\mathrm{f}(x)=x^2+x+c$，$\\mathrm{f}(0)=3\\Rightarrow c=3$。$\\mathrm{f}(2)=4+2+3=9$。</p>"}, {"n": 6, "q": "<p>求由 $y=\\sqrt x$、$x=4$ 与 $x$ 轴围成的面积。</p>", "a": "<p>$\\int_0^4 x^{1/2}\\mathrm{d}x=\\left[\\dfrac23 x^{3/2}\\right]_0^4=\\dfrac23\\cdot 8=\\dfrac{16}{3}$。</p>"}]}, {"key": "P9_向量", "title": "P9 · 向量 Vectors", "group": "P", "qs": [{"n": 1, "q": "<p>$\\mathbf{p}=\\begin{pmatrix}2\\\\-5\\end{pmatrix}$，$\\mathbf{q}=\\begin{pmatrix}-1\\\\3\\end{pmatrix}$。求 $\\mathbf{p}+\\mathbf{q}$ 与 $2\\mathbf{p}-3\\mathbf{q}$。</p>", "a": "<p>$\\mathbf{p}+\\mathbf{q}=\\begin{pmatrix}1\\\\-2\\end{pmatrix}$；$2\\mathbf{p}-3\\mathbf{q}=\\begin{pmatrix}4\\\\-10\\end{pmatrix}-\\begin{pmatrix}-3\\\\9\\end{pmatrix}=\\begin{pmatrix}7\\\\-19\\end{pmatrix}$。</p>"}, {"n": 2, "q": "<p>求 $\\begin{pmatrix}7\\\\24\\end{pmatrix}$ 的模与方向角。</p>", "a": "<p>模 $=\\sqrt{49+576}=25$；方向角 $=\\tan^{-1}\\!\\left(\\dfrac{24}{7}\\right)=73.7^\\circ$（第一象限）。</p>"}, {"n": 3, "q": "<p>已知 $|\\mathbf{v}|=10$，方向角 $150^\\circ$，写成分量形式（精确到 $3$ 位有效数字）。</p>", "a": "<p>$\\begin{pmatrix}10\\cos150^\\circ\\\\10\\sin150^\\circ\\end{pmatrix}=\\begin{pmatrix}-8.66\\\\5\\end{pmatrix}$。</p>"}, {"n": 4, "q": "<p>点 $A(2,-1)$、$B(-4,3)$，求 $\\overrightarrow{AB}$ 与 $|AB|$。</p>", "a": "<p>$\\overrightarrow{AB}=\\begin{pmatrix}-6\\\\4\\end{pmatrix}$；$|AB|=\\sqrt{36+16}=\\sqrt{52}=2\\sqrt{13}$。</p>"}, {"n": 5, "q": "<p>判断 $\\mathbf{u}=\\begin{pmatrix}6\\\\-9\\end{pmatrix}$ 与 $\\mathbf{v}=\\begin{pmatrix}-4\\\\6\\end{pmatrix}$ 是否平行。</p>", "a": "<p>平行。$\\mathbf{u}=-\\dfrac32\\mathbf{v}$（对应分量成比例：$6/(-4)=-1.5$，$-9/6=-1.5$）。</p>"}, {"n": 6, "q": "<p>两个力 $\\mathbf{F}_1=\\begin{pmatrix}5\\\\2\\end{pmatrix}$ N 与 $\\mathbf{F}_2=\\begin{pmatrix}-3\\\\4\\end{pmatrix}$ N 作用于同一质点，求合力与合力的大小。</p>", "a": "<p>合力 $=\\begin{pmatrix}2\\\\6\\end{pmatrix}$ N，大小 $=\\sqrt{4+36}=\\sqrt{40}=2\\sqrt{10}\\approx6.32$ N。</p>"}]}, {"key": "S1_统计抽样", "title": "S1 · 统计抽样 Statistical sampling", "group": "S", "qs": [{"n": 1, "q": "<p>说明总体与样本的区别，并各举一例。</p>", "a": "<p>总体是研究对象的全体（如某市全部选民）；样本是从中抽取、实际测量的一部分（如随机抽取的 $500$ 位选民）。用样本的统计量推断总体的参数。</p>"}, {"n": 2, "q": "<p>什么是抽样框？若抽样框不完整会怎样？</p>", "a": "<p>抽样框是所有抽样单位的名单（如选民名册、学生名单）。若不完整或过期，部分单位根本没有机会被抽中，样本产生系统性偏差，推断结果偏离总体。</p>"}, {"n": 3, "q": "<p>说明简单随机抽样的操作步骤，并给出一个优点和一个缺点。</p>", "a": "<p>步骤：确定抽样框 → 给每个单位编号 → 用随机数表或计算器生成不重复随机数 → 抽取对应单位。优点：每个单位机会均等，无主观选择偏差。缺点：需要完整抽样框；大总体时成本高；小样本仍可能不具代表性。</p>"}, {"n": 4, "q": "<p>系统抽样与机会抽样各有什么主要缺点？</p>", "a": "<p>系统抽样：若名单存在周期性排列，按固定间隔抽取会系统性地偏向某类单位。机会抽样：样本来自便利可得的对象，往往不能代表总体，偏差难以估计。</p>"}, {"n": 5, "q": "<p>为什么\"不同的样本可以得出关于总体的不同结论\"？这与样本量有什么关系？</p>", "a": "<p>样本只是总体的一部分，抽取具有偶然性，样本统计量（如样本均值）本身会随机波动，不同样本给出不同数值。样本量越大，这种波动通常越小，结论越稳定；样本量小时波动大，结论不确定性高。</p>"}]}, {"key": "S2_数据呈现与解释", "title": "S2 · 数据呈现与解释 Data presentation and interpretation", "group": "S", "qs": [{"n": 1, "q": "<p>直方图某组组距 $4$，频率密度 $7$，求该组频率。</p>", "a": "<p>频率 $=$ 面积 $=4\\times7=28$。</p>"}, {"n": 2, "q": "<p>数据 $3,7,5,9,6$，求均值与标准差（保留 $3$ 位有效数字）。</p>", "a": "<p>$\\bar x=\\dfrac{30}{5}=6$。$\\sum x^2=9+49+25+81+36=200$。$S_{xx}=200-\\dfrac{900}{5}=20$。方差 $=4$，标准差 $=2$。</p>"}, {"n": 3, "q": "<p>已知 $n=10$，$\\sum x=60$，$\\sum x^2=430$，求标准差。</p>", "a": "<p>$\\bar x=6$。$S_{xx}=430-\\dfrac{3600}{10}=70$。方差 $=7$，标准差 $=\\sqrt7=2.65$。</p>"}, {"n": 4, "q": "<p>一组数据的 $Q_1=20$，$Q_3=44$。用 $1.5\\times\\mathrm{IQR}$ 判据给出异常值范围。</p>", "a": "<p>$\\mathrm{IQR}=24$，$1.5\\times\\mathrm{IQR}=36$。低于 $20-36=-16$ 或高于 $44+36=80$ 的值视为异常值。</p>"}, {"n": 5, "q": "<p>说明\"相关不蕴含因果\"的含义并举一例。</p>", "a": "<p>两个变量存在相关，只说明它们的变化有伴随关系，不能推断一个导致另一个。例：某地区冰淇淋销量与溺水事故数正相关，但共同原因是气温（夏季高温），二者并非因果关系。</p>"}, {"n": 6, "q": "<p>数据经编码 $y=\\dfrac{x-50}{4}$，若 $\\bar x=62$、$\\sigma_x=12$，求 $\\bar y$ 与 $\\sigma_y$。</p>", "a": "<p>$\\bar y=\\dfrac{62-50}{4}=3$；$\\sigma_y=\\dfrac{12}{4}=3$（平移不影响离散度，除以 $4$ 使标准差也除以 $4$）。</p>"}]}, {"key": "S3_概率", "title": "S3 · 概率 Probability", "group": "S", "qs": [{"n": 1, "q": "<p>$\\mathrm{P}(A)=0.35$，求 $\\mathrm{P}(A')$。</p>", "a": "<p>$\\mathrm{P}(A')=1-0.35=0.65$。</p>"}, {"n": 2, "q": "<p>$A$、$B$ 互斥，$\\mathrm{P}(A)=0.3$，$\\mathrm{P}(B)=0.45$，求 $\\mathrm{P}(A\\cup B)$。</p>", "a": "<p>互斥则 $\\mathrm{P}(A\\cap B)=0$，故 $\\mathrm{P}(A\\cup B)=0.3+0.45=0.75$。</p>"}, {"n": 3, "q": "<p>$A$、$B$ 独立，$\\mathrm{P}(A)=0.6$，$\\mathrm{P}(B)=0.25$，求 $\\mathrm{P}(A\\cap B)$ 与 $\\mathrm{P}(A\\cup B)$。</p>", "a": "<p>$\\mathrm{P}(A\\cap B)=0.6\\times0.25=0.15$。$\\mathrm{P}(A\\cup B)=0.6+0.25-0.15=0.7$。</p>"}, {"n": 4, "q": "<p>掷两枚公平骰子，求点数和为 $7$ 的概率。</p>", "a": "<p>$36$ 种等可能结果，和为 $7$ 的有 $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ 共 $6$ 种，概率 $=\\dfrac{6}{36}=\\dfrac16$。</p>"}, {"n": 5, "q": "<p>袋中 $5$ 红 $3$ 绿，有放回连取两次，求恰有一次红球的概率。</p>", "a": "<p>有放回则独立。红后绿 $=\\dfrac58\\cdot\\dfrac38=\\dfrac{15}{64}$；绿后红 $=\\dfrac38\\cdot\\dfrac58=\\dfrac{15}{64}$。合计 $=\\dfrac{30}{64}=\\dfrac{15}{32}$。</p>"}, {"n": 6, "q": "<p>说明为什么两个概率非零的互斥事件一定不独立。</p>", "a": "<p>若 $A$、$B$ 互斥且概率均非零，则 $\\mathrm{P}(A\\cap B)=0$，而 $\\mathrm{P}(A)\\mathrm{P}(B)&gt;0$，两者不相等，不满足独立的定义式 $\\mathrm{P}(A\\cap B)=\\mathrm{P}(A)\\mathrm{P}(B)$，故不独立。</p>"}]}, {"key": "S4_统计分布", "title": "S4 · 统计分布 Statistical distributions", "group": "S", "qs": [{"n": 1, "q": "<p>$X\\sim\\mathrm{B}(5,0.3)$，求 $\\mathrm{P}(X=2)$。</p>", "a": "<p>$\\binom52(0.3)^2(0.7)^3=10\\times0.09\\times0.343=0.3087$。</p>"}, {"n": 2, "q": "<p>$X\\sim\\mathrm{B}(8,0.5)$，求 $\\mathrm{P}(X=0)$ 与 $\\mathrm{P}(X=8)$。</p>", "a": "<p>$\\mathrm{P}(X=0)=0.5^8=\\dfrac{1}{256}=0.00391$；$\\mathrm{P}(X=8)=0.5^8=\\dfrac{1}{256}$（对称）。</p>"}, {"n": 3, "q": "<p>$X\\sim\\mathrm{B}(10,0.25)$，求 $\\mathrm{P}(X\\le1)$。</p>", "a": "<p>$\\mathrm{P}(X=0)=0.75^{10}=0.0563$；$\\mathrm{P}(X=1)=\\binom{10}{1}(0.25)(0.75)^9=10\\times0.25\\times0.0751=0.1877$。合计 $=0.2440$。</p>"}, {"n": 4, "q": "<p>$X\\sim\\mathrm{B}(9,0.6)$，用 $\\mathrm{P}(X\\ge7)$ 的补事件形式写出计算式并求到 $3$ 位有效数字。</p>", "a": "<p>$\\mathrm{P}(X\\ge7)=\\mathrm{P}(X=7)+\\mathrm{P}(X=8)+\\mathrm{P}(X=9)=\\binom97(0.6)^7(0.4)^2+\\binom98(0.6)^8(0.4)+(0.6)^9=36(0.0280)(0.16)+9(0.0168)(0.4)+0.0101=0.1612+0.0605+0.0101=0.232$。</p>"}, {"n": 5, "q": "<p>袋中有放回地抽 $15$ 次，每次抽到红球概率 $0.2$。写出红球数的分布，并求恰有 $3$ 个红球的概率。</p>", "a": "<p>有放回保证独立与概率不变，故 $X\\sim\\mathrm{B}(15,0.2)$。$\\mathrm{P}(X=3)=\\binom{15}{3}(0.2)^3(0.8)^{12}=455\\times0.008\\times0.0687=0.250$。</p>"}, {"n": 6, "q": "<p>说明在什么情况下不能用二项分布为\"从 $20$ 件产品中不放回抽取 $5$ 件中的次品数\"建模，并说明原因。</p>", "a": "<p>不放回抽取时各次试验<strong>不独立</strong>（第一次的结果改变了剩余次品比例），且每次抽到次品的概率不再相同，不满足二项分布的条件，因此不能直接建模为二项分布。</p>"}]}, {"key": "S5_假设检验", "title": "S5 · 统计假设检验 Statistical hypothesis testing", "group": "S", "qs": [{"n": 1, "q": "<p>写出假设检验中下列术语的含义：原假设、备择假设、显著性水平。</p>", "a": "<p>原假设 $H_0$ 是默认成立、含等号的假设（如 $p=0.4$）；备择假设 $H_1$ 是我们希望找到证据支持的假设（如 $p&gt;0.4$）；显著性水平 $\\alpha$ 是当 $H_0$ 为真时错误拒绝 $H_0$ 的概率上限（常用 $5\\%$）。</p>"}, {"n": 2, "q": "<p>说明单尾检验与双尾检验在显著性水平分配上的区别。</p>", "a": "<p>单尾检验把全部显著性水平放在一端（如 $5\\%$ 全在右尾）；双尾检验分到两端（$5\\%$ 的检验每端 $2.5\\%$，$10\\%$ 的检验每端 $5\\%$）。</p>"}, {"n": 3, "q": "<p>$X\\sim\\mathrm{B}(15,0.3)$，在 $H_1:p&gt;0.3$ 下观测 $x=8$，求检验用的概率。</p>", "a": "<p>右尾：$\\mathrm{P}(X\\ge8)=1-\\mathrm{P}(X\\le7)$。查累积表 $\\mathrm{P}(X\\le7)=0.9500$，故 $\\mathrm{P}(X\\ge8)=0.0500$。</p>"}, {"n": 4, "q": "<p>承上题，若在 $5\\%$ 水平检验，结论是什么？</p>", "a": "<p>$p$ 值 $=0.0500\\le0.05$，落在临界域内，<strong>拒绝 $H_0$</strong>。有足够证据表明真实比例高于 $0.3$。（注意：恰好等于临界值时按\"$\\le\\alpha$ 即拒绝\"处理，属于边界情形。）</p>"}, {"n": 5, "q": "<p>为什么说\"没有拒绝 $H_0$\"不等于\"$H_0$ 为真\"？</p>", "a": "<p>检验的结论只有两种：证据足以拒绝 $H_0$，或证据不足以拒绝 $H_0$。后者只是说明样本没有提供足够的反例，并不意味着已经证明 $H_0$ 成立——样本量小、效应弱时都可能得出\"不拒绝\"，但真实情况可能不同。</p>"}, {"n": 6, "q": "<p>解释显著性水平 $5\\%$ 的含义。</p>", "a": "<p>若 $H_0$ 实际为真，那么我们用这个检验仍有 $5\\%$ 的概率（由于抽样的偶然性）错误地拒绝它，这称为第 I 类错误。显著性水平就是这个错误概率的上限。</p>"}]}, {"key": "M6_量与单位", "title": "M6 · 力学中的量与单位 Quantities and units in mechanics", "group": "M", "qs": [{"n": 1, "q": "<p>把 $54\\ \\mathrm{km\\,h^{-1}}$ 换算为 $\\mathrm{m\\,s^{-1}}$。</p>", "a": "<p>$\\dfrac{54\\times1000}{3600}=15\\ \\mathrm{m\\,s^{-1}}$。</p>"}, {"n": 2, "q": "<p>写出速度、加速度、力的 S.I. 单位。</p>", "a": "<p>速度 $\\mathrm{m\\,s^{-1}}$；加速度 $\\mathrm{m\\,s^{-2}}$；力 $\\mathrm{N}=\\mathrm{kg\\,m\\,s^{-2}}$。</p>"}, {"n": 3, "q": "<p>质量 $12$ kg 的物体重量是多少（$g=9.8$）？</p>", "a": "<p>$W=12\\times9.8=117.6\\approx118$ N。</p>"}, {"n": 4, "q": "<p>解释\"轻绳\"与\"不可伸长\"两个建模假设的含义。</p>", "a": "<p>轻绳：绳的质量忽略不计，因此绳上张力处处相同，且不需考虑绳自身的受力。不可伸长：绳长恒定，因此绳连接的两个物体沿绳方向的加速度大小相等、速度大小相等。</p>"}, {"n": 5, "q": "<p>一个力为 $50$ N，作用在 $2.5$ kg 的物体上，求加速度及单位。</p>", "a": "<p>$a=\\dfrac{F}{m}=\\dfrac{50}{2.5}=20\\ \\mathrm{m\\,s^{-2}}$。</p>"}]}, {"key": "M7_运动学", "title": "M7 · 运动学 Kinematics", "group": "M", "qs": [{"n": 1, "q": "<p>物体由静止匀加速，$a=3\\ \\mathrm{m\\,s^{-2}}$，求 $5$ s 内位移与末速。</p>", "a": "<p>$s=\\dfrac12(3)(25)=37.5$ m；$v=3(5)=15\\ \\mathrm{m\\,s^{-1}}$。</p>"}, {"n": 2, "q": "<p>车以 $20\\ \\mathrm{m\\,s^{-1}}$ 匀减速至停止，加速度 $-4\\ \\mathrm{m\\,s^{-2}}$，求刹车距离。</p>", "a": "<p>$v^2=u^2+2as\\Rightarrow 0=400-8s\\Rightarrow s=50$ m。</p>"}, {"n": 3, "q": "<p>质点 $r=t^3-6t^2+9t$，求速度为 $0$ 的时刻。</p>", "a": "<p>$v=3t^2-12t+9=3(t-1)(t-3)=0$，$t=1$ 与 $t=3$。</p>"}, {"n": 4, "q": "<p>承上题，求 $0\\le t\\le4$ 内的总路程。</p>", "a": "<p>$r(0)=0$，$r(1)=1-6+9=4$，$r(3)=27-54+27=0$，$r(4)=64-96+36=4$。路程 $=|4-0|+|0-4|+|4-0|=4+4+4=12$ m。</p>"}, {"n": 5, "q": "<p>已知 $a=6t-4$，且 $t=0$ 时 $v=2$、$r=0$，求 $v(t)$ 与 $r(t)$。</p>", "a": "<p>$v=\\int(6t-4)\\mathrm{d}t=3t^2-4t+c$，$v(0)=2\\Rightarrow c=2$，故 $v=3t^2-4t+2$。$r=\\int v\\,\\mathrm{d}t=t^3-2t^2+2t+c'$，$r(0)=0\\Rightarrow c'=0$，故 $r=t^3-2t^2+2t$。</p>"}, {"n": 6, "q": "<p>说明位移—时间图的梯度与速度—时间图面积各代表什么。</p>", "a": "<p>位移—时间图的梯度代表速度；速度—时间图曲线下的面积代表位移（$t$ 轴下方部分为负位移），其梯度代表加速度。</p>"}]}, {"key": "M8_力与牛顿定律", "title": "M8 · 力与牛顿定律 Forces and Newton's laws", "group": "M", "qs": [{"n": 1, "q": "<p>质量 $8$ kg 的物体受合力 $24$ N，求加速度。</p>", "a": "<p>$a=\\dfrac{24}{8}=3\\ \\mathrm{m\\,s^{-2}}$。</p>"}, {"n": 2, "q": "<p>质量 $60$ kg 的人站在电梯中，电梯以 $1.5\\ \\mathrm{m\\,s^{-2}}$ 向上加速，$g=9.8$。求地板对人的支持力。</p>", "a": "<p>对人受力：支持力 $R$ 向上，重量 $mg$ 向下。取向上为正：$R-mg=ma$，$R=60(9.8+1.5)=60(11.3)=678$ N。</p>"}, {"n": 3, "q": "<p>说明牛顿第三定律，并指出它与一对平衡力的区别。</p>", "a": "<p>牛顿第三定律：若 A 对 B 施加大小为 $F$ 的力，则 B 对 A 施加大小相等、方向相反的力，二者作用在不同物体上、性质相同。平衡力则作用在同一个物体上，合力为零。作用力与反作用力不能相互抵消，因为它们不作用于同一物体。</p>"}, {"n": 4, "q": "<p>质量 $4$ kg 的物体在光滑水平面上，受力 $\\begin{pmatrix}12\\\\0\\end{pmatrix}$ N，求 $3$ s 后的速度（初速为零）。</p>", "a": "<p>$a=\\dfrac{12}{4}=3\\ \\mathrm{m\\,s^{-2}}$，$v=at=9\\ \\mathrm{m\\,s^{-1}}$，方向沿力的方向。</p>"}, {"n": 5, "q": "<p>悬挂物质量 $5$ kg，桌面物质量 $3$ kg，桌面光滑，$g=9.8$。求加速度与张力。</p>", "a": "<p>$5g-T=5a$；$T=3a$。$49=8a\\Rightarrow a=6.125\\ \\mathrm{m\\,s^{-2}}$；$T=3(6.125)=18.4$ N。</p>"}, {"n": 6, "q": "<p>一个 $10$ kg 的物体以 $2\\ \\mathrm{m\\,s^{-2}}$ 向上加速运动，求使其运动的向上的拉力（$g=9.8$）。</p>", "a": "<p>取向上为正：$P-mg=ma$，$P=10(9.8+2)=118$ N。</p>"}]}], "gmeta": {"P": {"title": "Paper 1 · 纯数 Pure Mathematics（9 个专题）", "label": "Pure · 纯数"}, "S": {"title": "Paper 2 Section A · 统计 Statistics（5 个专题）", "label": "Statistics · 统计"}, "M": {"title": "Paper 2 Section B · 力学 Mechanics（3 个专题）", "label": "Mechanics · 力学"}}, "grank": ["P", "S", "M"]};
+let cur = null, idx = 0, showAns = false;
+
+/* MathJax 异步加载：动态插入内容后必须重新排版。用单一 Promise 链串行化，
+   避免快速翻题时 MathJax 报 "Typeset already in progress"；未加载完则轮询重试。 */
+let _tp = Promise.resolve();
+function typeset(id){
+  const run = function() {
+    const el = id ? [document.getElementById(id)] : undefined;
+    return window.MathJax.typesetPromise(el);
+  };
+  if (window.MathJax && window.MathJax.typesetPromise) {
+    _tp = _tp.then(run).catch(function(e){ /* 忽略局部排版异常 */ });
+  } else {
+    setTimeout(function(){ typeset(id); }, 120);
+  }
+}
+
+function renderMenu(){
+  const box = document.getElementById('groups');
+  let h = '';
+  DATA.grank.forEach(function(g){
+    h += '<h3>' + DATA.gmeta[g].title + '</h3><div class="grid">';
+    DATA.decks.filter(function(d){return d.group===g;}).forEach(function(d){
+      h += '<div class="card" onclick="openDeck(\'' + d.key + '\')"><div class="t">' +
+           d.title + '</div><div class="c">' + d.qs.length + ' 题</div></div>';
+    });
+    h += '</div>';
+  });
+  box.innerHTML = h;
+  typeset('groups');
+}
+
+function openDeck(key){
+  cur = DATA.decks.find(function(d){return d.key===key;});
+  idx = 0; showAns = false;
+  document.getElementById('menu').classList.remove('on');
+  document.getElementById('stage').classList.add('on');
+  render();
+}
+function backMenu(){
+  document.getElementById('stage').classList.remove('on');
+  document.getElementById('menu').classList.add('on');
+}
+function render(){
+  const q = cur.qs[idx];
+  document.getElementById('qhead').textContent = cur.title + '　第 ' + q.n + ' / ' + cur.qs.length + ' 题';
+  document.getElementById('qtext').innerHTML = q.q;
+  document.getElementById('atext').innerHTML = q.a;
+  document.getElementById('abox').classList.toggle('on', showAns);
+  document.getElementById('pos').textContent = (idx+1) + ' / ' + cur.qs.length;
+  document.getElementById('prog').style.width = ((idx+1)/cur.qs.length*100) + '%';
+  typeset('qbox');
+}
+function toggleAns(){ showAns = !showAns; document.getElementById('abox').classList.toggle('on', showAns);
+  if (showAns) typeset('atext'); }
+function prev(){ if(!cur) return; idx = (idx - 1 + cur.qs.length) % cur.qs.length; showAns=false; render(); }
+function next_(){ if(!cur) return; idx = (idx + 1) % cur.qs.length; showAns=false; render(); }
+document.addEventListener('keydown', function(e){
+  if(!cur) return;
+  if(e.key === 'ArrowRight'){ next_(); }
+  else if(e.key === 'ArrowLeft'){ prev(); }
+  else if(e.key === ' '){ e.preventDefault(); toggleAns(); }
+  else if(e.key === 'Escape'){ backMenu(); }
+});
+renderMenu();
+</script>
+</body></html>
